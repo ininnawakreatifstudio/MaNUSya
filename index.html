@@ -2256,6 +2256,16 @@ function renderPrayerGrid(containerId){
 
 const WEEKDAYS_ID = ['Minggu','Senin','Selasa','Rabu','Kamis','Jum\'at','Sabtu'];
 const MONTHS_ID = ['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Ags','Sep','Okt','Nov','Des'];
+
+/* ============================================================
+   FIX: Nama bulan Hijriah manual — tidak bergantung Intl locale
+   ============================================================ */
+const HIJRI_MONTHS = [
+  'Muharram', 'Safar', 'Rabiulawal', 'Rabiulakhir',
+  'Jumadilawal', 'Jumadilakhir', 'Rajab', 'Syaban',
+  'Ramadhan', 'Syawal', 'Dzulqadah', 'Dzulhijjah'
+];
+
 function pad2(n){ return String(n).padStart(2, '0'); }
 
 function getHijriParts(date){
@@ -2313,14 +2323,8 @@ function renderHijriCalendar(containerId){
 
   if(!days.length){ container.innerHTML = ''; return; }
 
-  let monthLabel;
-  try {
-    monthLabel = new Intl.DateTimeFormat('id-ID-u-ca-islamic-umalqura', {
-      month:'long', year:'numeric'
-    }).format(start) + ' H';
-  } catch(e){
-    monthLabel = `${startParts.month}/${startParts.year} H`;
-  }
+  /* FIX: pakai nama bulan manual, tidak pakai Intl */
+  const monthLabel = `${HIJRI_MONTHS[startParts.month - 1]} ${startParts.year} H`;
 
   const dayNames = ['Sen','Sel','Rab','Kam','Jum','Sab','Min'];
   const mondayIdx = d => (d + 6) % 7;
@@ -2348,14 +2352,14 @@ function renderHijriCalendar(containerId){
 function updateHijri(){
   const now = new Date();
   const greg = `${WEEKDAYS_ID[now.getDay()]}, ${now.getDate()} ${MONTHS_ID[now.getMonth()]} ${now.getFullYear()}`;
-  let hijri = '';
-  try {
-    hijri = new Intl.DateTimeFormat('id-ID-u-ca-islamic-umalqura', {
-      day: 'numeric', month: 'long', year: 'numeric'
-    }).format(now) + ' H';
-  } catch(e) {
-    hijri = 'Hijriah tidak tersedia';
+
+  /* FIX: nama bulan Hijriah diambil dari array manual */
+  let hijri = 'Hijriah tidak tersedia';
+  const hp = getHijriParts(now);
+  if(hp && hp.day && hp.month && hp.year && HIJRI_MONTHS[hp.month - 1]){
+    hijri = `${hp.day} ${HIJRI_MONTHS[hp.month - 1]} ${hp.year} H`;
   }
+
   ['gregDate', 'gregDate2'].forEach(id => {
     const el = document.getElementById(id);
     if(el) el.textContent = greg;
