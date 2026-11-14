@@ -129,13 +129,15 @@ main{max-width:var(--maxw);margin:0 auto;padding:32px 24px 56px}
   .hero p{font-size:1.02rem}
 }
 
-/* ============ PRAYER LIVE CARD ============ */
+/* ============ PRAYER LIVE CARD (compact) ============ */
 .prayer-live{
   background:linear-gradient(135deg,var(--green-700) 0%,var(--green-800) 100%);
-  border-radius:var(--radius-lg);padding:24px;
+  border-radius:var(--radius-lg);padding:18px;
   color:#fff;position:relative;overflow:hidden;
-  box-shadow:0 12px 32px rgba(21,106,68,.28)
+  box-shadow:0 12px 32px rgba(21,106,68,.28);
+  max-width:760px
 }
+@media(min-width:960px){.prayer-live{padding:22px}}
 .prayer-live::before{
   content:'';position:absolute;top:0;right:0;width:45%;height:100%;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cg fill='none' stroke='%23FFFFFF' stroke-width='1' stroke-opacity='0.12'%3E%3Cpath d='M100 20 L112 80 L172 100 L112 120 L100 180 L88 120 L28 100 L88 80 Z'/%3E%3Ccircle cx='100' cy='100' r='60'/%3E%3C/g%3E%3C/svg%3E");
@@ -144,78 +146,93 @@ main{max-width:var(--maxw);margin:0 auto;padding:32px 24px 56px}
 }
 .prayer-head{
   display:flex;align-items:flex-start;justify-content:space-between;
-  gap:16px;margin-bottom:18px;position:relative;z-index:1;flex-wrap:wrap
+  gap:12px;margin-bottom:14px;position:relative;z-index:1;flex-wrap:wrap
 }
 .prayer-head-info{min-width:0}
 .prayer-label{
-  font-size:.7rem;font-weight:700;color:var(--green-200);
-  text-transform:uppercase;letter-spacing:.08em;margin-bottom:3px
+  font-size:.66rem;font-weight:700;color:var(--green-200);
+  text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px
 }
-.prayer-location{font-size:1.1rem;font-weight:700;color:#fff;letter-spacing:-.01em}
-.prayer-location small{font-size:.72rem;color:var(--green-200);
+.prayer-location{font-size:1rem;font-weight:700;color:#fff;letter-spacing:-.01em}
+.prayer-location small{font-size:.68rem;color:var(--green-200);
   font-weight:500;margin-left:6px}
 .live-clock{
-  font-family:'Inter',monospace;font-weight:800;font-size:2rem;
+  font-family:'Inter',monospace;font-weight:800;font-size:1.5rem;
   color:#fff;letter-spacing:.02em;
   font-variant-numeric:tabular-nums;
   font-feature-settings:'tnum','lnum';
   text-shadow:0 2px 8px rgba(0,0,0,.15)
 }
-@media(min-width:960px){.live-clock{font-size:2.4rem}}
+@media(min-width:600px){.live-clock{font-size:1.7rem}}
+@media(min-width:960px){.live-clock{font-size:1.85rem}}
 
-.date-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px;
+.date-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;
   position:relative;z-index:1}
 .date-item{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:7px 12px;border-radius:8px;
+  display:inline-flex;align-items:center;gap:6px;
+  padding:5px 10px;border-radius:6px;
   background:rgba(255,255,255,.1);
   border:1px solid rgba(255,255,255,.15);
-  font-size:.82rem;color:#fff;font-weight:500
+  font-size:.75rem;color:#fff;font-weight:500
 }
-.date-item svg{width:14px;height:14px;color:var(--green-200);flex:none}
+.date-item svg{width:12px;height:12px;color:var(--green-200);flex:none}
 .date-item strong{color:#fff;font-weight:700}
 
+/* PRAYER GRID — compact & fit 5 on mobile */
 .prayer-grid-live{
-  display:grid;grid-template-columns:repeat(5,1fr);gap:8px;
-  position:relative;z-index:1;margin-bottom:18px
+  display:grid;grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:5px;position:relative;z-index:1;margin-bottom:14px
 }
 .prayer-item-live{
-  padding:12px 6px;border-radius:10px;
+  padding:8px 2px;border-radius:8px;
   background:rgba(255,255,255,.08);
   border:1px solid rgba(255,255,255,.12);
-  text-align:center;transition:.2s
+  text-align:center;transition:.2s;min-width:0
 }
 .prayer-item-live:hover{background:rgba(255,255,255,.12)}
 .prayer-item-live.now{
   background:var(--green-400);color:var(--green-900);
   border-color:var(--green-300);
-  box-shadow:0 0 24px rgba(92,192,141,.5);
+  box-shadow:0 0 20px rgba(92,192,141,.5);
   transform:translateY(-1px)
 }
 .prayer-item-live .p-name{
-  font-size:.68rem;font-weight:700;text-transform:uppercase;
-  letter-spacing:.07em;opacity:.7;margin-bottom:3px
+  font-size:.55rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:.03em;opacity:.7;margin-bottom:2px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis
 }
 .prayer-item-live.now .p-name{opacity:.9;color:var(--green-900)}
 .prayer-item-live .p-time{
-  font-family:'Inter',monospace;font-size:1.05rem;font-weight:800;
-  letter-spacing:-.01em;font-variant-numeric:tabular-nums;
-  font-feature-settings:'tnum'
+  font-family:'Inter',monospace;font-size:.8rem;font-weight:800;
+  letter-spacing:-.02em;font-variant-numeric:tabular-nums;
+  font-feature-settings:'tnum';
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis
 }
-@media(min-width:960px){.prayer-item-live .p-time{font-size:1.15rem}}
+@media(min-width:480px){
+  .prayer-grid-live{gap:6px}
+  .prayer-item-live{padding:9px 3px}
+  .prayer-item-live .p-name{font-size:.6rem}
+  .prayer-item-live .p-time{font-size:.88rem}
+}
+@media(min-width:768px){
+  .prayer-grid-live{gap:8px}
+  .prayer-item-live{padding:10px 6px}
+  .prayer-item-live .p-name{font-size:.65rem}
+  .prayer-item-live .p-time{font-size:.95rem}
+}
 
 .countdown-bar{
   display:flex;align-items:center;justify-content:space-between;
-  gap:12px;padding:12px 16px;border-radius:10px;
+  gap:10px;padding:9px 12px;border-radius:8px;
   background:rgba(255,255,255,.08);
   border:1px solid rgba(255,255,255,.15);
   position:relative;z-index:1;flex-wrap:wrap
 }
-.countdown-label{font-size:.85rem;color:var(--green-100);font-weight:500}
+.countdown-label{font-size:.78rem;color:var(--green-100);font-weight:500}
 .countdown-label strong{color:#fff;font-weight:700}
 .countdown-value{
-  font-family:'Inter',monospace;font-weight:800;font-size:1.1rem;
-  color:#fff;letter-spacing:.04em;
+  font-family:'Inter',monospace;font-weight:800;font-size:.95rem;
+  color:#fff;letter-spacing:.03em;
   font-variant-numeric:tabular-nums;
   font-feature-settings:'tnum'
 }
@@ -295,6 +312,51 @@ main{max-width:var(--maxw);margin:0 auto;padding:32px 24px 56px}
 .cta:hover{color:var(--green-700)}
 .cta.locked{color:var(--muted)}
 .cta svg{width:11px;height:11px}
+
+/* ============ MARKET TABS ============ */
+.market-tabs{
+  display:flex;gap:6px;margin-bottom:22px;padding:5px;
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  box-shadow:var(--shadow-sm)
+}
+.market-tab{
+  flex:1;padding:11px 16px;border-radius:10px;
+  font-weight:700;font-size:.9rem;color:var(--ink-soft);
+  transition:.15s;white-space:nowrap;
+  display:flex;align-items:center;justify-content:center;gap:6px
+}
+.market-tab svg{width:16px;height:16px;opacity:.7}
+.market-tab:hover{background:var(--green-50);color:var(--green-700)}
+.market-tab.active{
+  background:linear-gradient(135deg,var(--green-500),var(--green-600));
+  color:#fff;box-shadow:0 4px 12px rgba(47,165,111,.25)
+}
+.market-tab.active svg{opacity:1}
+
+.market-panel{display:none}
+.market-panel.active{display:block;animation:fade .25s ease}
+
+/* Info card 2-col */
+.info-2col{display:grid;grid-template-columns:1fr;gap:12px}
+@media(min-width:720px){.info-2col{grid-template-columns:1fr 1fr}}
+
+.info-card{
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  padding:18px;box-shadow:var(--shadow-sm)
+}
+.info-card h3{
+  font-size:.95rem;font-weight:700;color:var(--green-800);
+  margin-bottom:10px;display:flex;align-items:center;gap:8px
+}
+.info-card h3 svg{width:18px;height:18px;color:var(--green-600)}
+.payment-list,.delivery-list{display:flex;flex-wrap:wrap;gap:8px}
+.pay-tag,.deliv-tag{
+  padding:6px 12px;border-radius:8px;font-size:.78rem;font-weight:600;
+  background:var(--green-50);color:var(--green-700);
+  border:1px solid var(--green-200);display:inline-flex;
+  align-items:center;gap:5px
+}
+.pay-tag svg,.deliv-tag svg{width:12px;height:12px}
 
 /* ============ PRODUCT CARDS ============ */
 .product-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
@@ -620,7 +682,7 @@ main{max-width:var(--maxw);margin:0 auto;padding:32px 24px 56px}
           <span class="user-name" id="userName">-</span>
           <span class="user-role" id="userRole">-</span>
         </div>
-        <button class="chip-logout" onclick="logout()" title="Keluar">
+        <button class="chip-logout" onclick="logout()" title="Logout">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5M21 12H9"/></svg>
         </button>
       </div>
@@ -651,7 +713,7 @@ main{max-width:var(--maxw);margin:0 auto;padding:32px 24px 56px}
       </div>
     </div>
 
-    <!-- Prayer Live Card -->
+    <!-- Prayer Live -->
     <div class="prayer-live" style="margin-bottom:26px">
       <div class="prayer-head">
         <div class="prayer-head-info">
@@ -811,7 +873,7 @@ main{max-width:var(--maxw);margin:0 auto;padding:32px 24px 56px}
       </div>
       <div class="hero-text">
         <h1>Ibadah &amp; Masjid</h1>
-        <p>Jadwal salat realtime, kajian, peta masjid, media sosial, profil masjid, dan NU News.</p>
+        <p>Jadwal salat realtime, kajian, profil masjid, daftar masjid NU Sleman, peta, media sosial, dan NU News.</p>
       </div>
     </div>
 
@@ -895,6 +957,43 @@ main{max-width:var(--maxw);margin:0 auto;padding:32px 24px 56px}
                 <div class="row-sub">1.250 jamaah terdaftar</div>
               </div>
               <button class="section-link" data-need="masjid:admin_masjid" data-demo="Daftarkan Jamaah Baru">Daftar</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Daftar Masjid NU Sleman -->
+        <div class="section">
+          <div class="section-head">
+            <div class="section-title">Masjid NU Sleman</div>
+            <button class="section-link" data-demo="Lihat Semua Masjid">Lihat semua</button>
+          </div>
+          <div class="list">
+            <div class="row">
+              <div class="row-date" style="background:var(--green-50);color:var(--green-700)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:26px;height:26px"><path d="M3 21h18"/><path d="M5 21v-7"/><path d="M19 21v-7"/><path d="M5 14a7 7 0 0 1 14 0"/><path d="M10 21v-3a2 2 0 0 1 4 0v3"/><path d="M12 7V5"/></svg>
+              </div>
+              <div class="row-body">
+                <div class="row-title">Masjid NU Sleman</div>
+                <div class="row-sub">Jl. Kaliurang KM 5 · 1.250 jamaah</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="row-date" style="background:var(--green-50);color:var(--green-700)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:26px;height:26px"><path d="M3 21h18"/><path d="M5 21v-7"/><path d="M19 21v-7"/><path d="M5 14a7 7 0 0 1 14 0"/><path d="M10 21v-3a2 2 0 0 1 4 0v3"/><path d="M12 7V5"/></svg>
+              </div>
+              <div class="row-body">
+                <div class="row-title">Masjid Baiturrahman NU</div>
+                <div class="row-sub">Depok, Sleman · 890 jamaah</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="row-date" style="background:var(--green-50);color:var(--green-700)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:26px;height:26px"><path d="M3 21h18"/><path d="M5 21v-7"/><path d="M19 21v-7"/><path d="M5 14a7 7 0 0 1 14 0"/><path d="M10 21v-3a2 2 0 0 1 4 0v3"/><path d="M12 7V5"/></svg>
+              </div>
+              <div class="row-body">
+                <div class="row-title">Masjid Al-Hidayah NU</div>
+                <div class="row-sub">Godean, Sleman · 720 jamaah</div>
+              </div>
             </div>
           </div>
         </div>
@@ -1017,18 +1116,62 @@ main{max-width:var(--maxw);margin:0 auto;padding:32px 24px 56px}
     </div>
 
     <div class="section">
-      <div class="section-head"><div class="section-title">Lembaga Ma'arif NU</div></div>
-      <div class="placeholder">
-        <h3>Direktori Ma'arif NU</h3>
-        <p>Daftar sekolah dan madrasah di bawah Lembaga Ma'arif NU Sleman.</p>
+      <div class="section-head">
+        <div class="section-title">Lembaga Ma'arif NU</div>
+        <button class="section-link" data-demo="Lihat Semua Ma'arif">Lihat semua</button>
+      </div>
+      <div class="list">
+        <div class="row">
+          <div class="row-date" style="background:var(--green-50);color:var(--green-700);font-size:.72rem;font-weight:800">MI</div>
+          <div class="row-body">
+            <div class="row-title">MI Ma'arif NU Sleman</div>
+            <div class="row-sub">Madrasah Ibtidaiyah · Sleman</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row-date" style="background:var(--green-50);color:var(--green-700);font-size:.72rem;font-weight:800">MTs</div>
+          <div class="row-body">
+            <div class="row-title">MTs Ma'arif NU Yogyakarta</div>
+            <div class="row-sub">Madrasah Tsanawiyah · Sleman</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row-date" style="background:var(--green-50);color:var(--green-700);font-size:.72rem;font-weight:800">MA</div>
+          <div class="row-body">
+            <div class="row-title">MA Ma'arif NU Sleman</div>
+            <div class="row-sub">Madrasah Aliyah · Sleman</div>
+          </div>
+        </div>
       </div>
     </div>
 
     <div class="section">
-      <div class="section-head"><div class="section-title">Pesantren NU</div></div>
-      <div class="placeholder">
-        <h3>Direktori Pesantren NU</h3>
-        <p>Daftar pesantren NU di Sleman beserta informasi singkat dan kontak.</p>
+      <div class="section-head">
+        <div class="section-title">Pesantren NU Sleman</div>
+        <button class="section-link" data-demo="Lihat Semua Pesantren">Lihat semua</button>
+      </div>
+      <div class="list">
+        <div class="row">
+          <div class="row-date" style="background:var(--green-50);color:var(--green-700);font-size:.72rem;font-weight:800">P</div>
+          <div class="row-body">
+            <div class="row-title">Pondok Pesantren Al-Munawwir NU</div>
+            <div class="row-sub">Krapyak, Sleman · 2.500 santri</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row-date" style="background:var(--green-50);color:var(--green-700);font-size:.72rem;font-weight:800">P</div>
+          <div class="row-body">
+            <div class="row-title">Pondok Pesantren Sunan Pandanaran</div>
+            <div class="row-sub">Ngaglik, Sleman · 1.800 santri</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row-date" style="background:var(--green-50);color:var(--green-700);font-size:.72rem;font-weight:800">P</div>
+          <div class="row-body">
+            <div class="row-title">Pondok Pesantren Nurul Ummah</div>
+            <div class="row-sub">Kotagede, Sleman · 900 santri</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -1046,182 +1189,442 @@ main{max-width:var(--maxw);margin:0 auto;padding:32px 24px 56px}
       </div>
       <div class="hero-text">
         <h1>MaNUSya Market</h1>
-        <p>Belanja dari UMKM jamaah NU (BAZMalah) dan jaringan toko NU (NUShop) dalam satu tempat.</p>
+        <p>Dua ekosistem: <strong>BAZMalah</strong> (marketplace UMKM) dan <strong>NUShop</strong> (toko NU dengan sistem kasir &amp; stok multi-gudang).</p>
       </div>
     </div>
 
     <div class="login-prompt" data-prompt-section="market"></div>
 
-    <div class="section">
-      <div class="section-head"><div class="section-title">Kategori</div></div>
-      <div class="cat-row">
-        <button class="cat-chip active">Semua</button>
-        <button class="cat-chip">Sembako</button>
-        <button class="cat-chip">Makanan</button>
-        <button class="cat-chip">Pakaian</button>
-        <button class="cat-chip">Buku</button>
-        <button class="cat-chip">Elektronik</button>
-        <button class="cat-chip">Kesehatan</button>
-      </div>
+    <!-- Sub-tab: BAZMalah / NUShop -->
+    <div class="market-tabs">
+      <button class="market-tab active" data-market-tab="bazmalah">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1.5-5h15L21 9"/><path d="M3 9v10a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V9"/><path d="M3 9h18"/></svg>
+        BAZMalah
+      </button>
+      <button class="market-tab" data-market-tab="nushop">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1.5-5h15L21 9"/><path d="M3 9v10a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V9"/><path d="M9 9v3a3 3 0 0 0 6 0V9"/></svg>
+        NUShop
+      </button>
     </div>
 
-    <div class="section">
-      <div class="section-head">
-        <div class="section-title">Produk Unggulan</div>
-        <button class="section-link" data-demo="Lihat Semua Produk">Lihat semua</button>
+    <!-- ========== BAZMalah Panel ========== -->
+    <div class="market-panel active" data-market-panel="bazmalah">
+      <div class="section">
+        <div class="section-head"><div class="section-title">Kategori</div></div>
+        <div class="cat-row">
+          <button class="cat-chip active">Semua</button>
+          <button class="cat-chip">Sembako</button>
+          <button class="cat-chip">Makanan</button>
+          <button class="cat-chip">Pakaian</button>
+          <button class="cat-chip">Buku</button>
+          <button class="cat-chip">Elektronik</button>
+          <button class="cat-chip">Kesehatan</button>
+        </div>
       </div>
-      <div class="product-grid">
-        <div class="product-card">
-          <div class="product-image">
-            <span class="product-badge">Promo</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M6 6v12M18 6v12"/><circle cx="12" cy="12" r="3"/></svg>
-          </div>
-          <div class="product-body">
-            <div class="product-cat">Sembako</div>
-            <div class="product-name">Beras Premium 5kg</div>
-            <div class="product-meta">
-              <span class="product-price">Rp 68.000</span>
-              <span class="product-rating"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg> 4.8</span>
+
+      <div class="section">
+        <div class="section-head">
+          <div class="section-title">Produk Unggulan Mitra</div>
+          <button class="section-link" data-demo="Lihat Semua Produk BAZMalah">Lihat semua</button>
+        </div>
+        <div class="product-grid">
+          <div class="product-card">
+            <div class="product-image">
+              <span class="product-badge">Promo</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M6 6v12M18 6v12"/><circle cx="12" cy="12" r="3"/></svg>
             </div>
-            <button class="product-btn" data-need="market:jamaah_market,manajemen_market" data-demo="Tambah Beras ke Keranjang">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
-              Keranjang
+            <div class="product-body">
+              <div class="product-cat">Sembako</div>
+              <div class="product-name">Beras Premium 5kg</div>
+              <div class="product-meta">
+                <span class="product-price">Rp 68.000</span>
+                <span class="product-rating"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg> 4.8</span>
+              </div>
+              <button class="product-btn" data-need="market:jamaah_market,manajemen_market" data-demo="Tambah ke Keranjang">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
+                Keranjang
+              </button>
+            </div>
+          </div>
+          <div class="product-card">
+            <div class="product-image">
+              <span class="product-badge">Best</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h12l2 8H4z"/><path d="M4 10h16v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M8 14h8"/></svg>
+            </div>
+            <div class="product-body">
+              <div class="product-cat">Makanan</div>
+              <div class="product-name">Sambal Bu Yati</div>
+              <div class="product-meta">
+                <span class="product-price">Rp 25.000</span>
+                <span class="product-rating"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg> 4.9</span>
+              </div>
+              <button class="product-btn" data-need="market:jamaah_market,manajemen_market" data-demo="Tambah ke Keranjang">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
+                Keranjang
+              </button>
+            </div>
+          </div>
+          <div class="product-card">
+            <div class="product-image">
+              <span class="product-badge">New</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7l-8 8-4-4"/><path d="M4 5v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2z"/></svg>
+            </div>
+            <div class="product-body">
+              <div class="product-cat">Pakaian</div>
+              <div class="product-name">Sarung NU Premium</div>
+              <div class="product-meta">
+                <span class="product-price">Rp 125.000</span>
+                <span class="product-rating"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg> 4.7</span>
+              </div>
+              <button class="product-btn" data-need="market:jamaah_market,manajemen_market" data-demo="Tambah ke Keranjang">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
+                Keranjang
+              </button>
+            </div>
+          </div>
+          <div class="product-card">
+            <div class="product-image">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            </div>
+            <div class="product-body">
+              <div class="product-cat">Buku</div>
+              <div class="product-name">Buku Yasin &amp; Tahlil</div>
+              <div class="product-meta">
+                <span class="product-price">Rp 15.000</span>
+                <span class="product-rating"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg> 4.9</span>
+              </div>
+              <button class="product-btn" data-need="market:jamaah_market,manajemen_market" data-demo="Tambah ke Keranjang">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
+                Keranjang
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-head">
+          <div class="section-title">Mitra UMKM BAZMalah</div>
+          <button class="section-link" data-demo="Lihat Semua Mitra">Lihat semua</button>
+        </div>
+        <div class="partner-grid">
+          <div class="partner">
+            <div class="partner-logo">WB</div>
+            <div class="partner-body">
+              <div class="partner-name">Warung Barokah</div>
+              <div class="partner-meta"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>4.8 · Makanan · 128 produk</div>
+            </div>
+          </div>
+          <div class="partner">
+            <div class="partner-logo">SM</div>
+            <div class="partner-body">
+              <div class="partner-name">Toko Sembako Makmur</div>
+              <div class="partner-meta"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>4.7 · Sembako · 210 produk</div>
+            </div>
+          </div>
+          <div class="partner">
+            <div class="partner-logo">AB</div>
+            <div class="partner-body">
+              <div class="partner-name">Konveksi Al-Barokah</div>
+              <div class="partner-meta"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>4.9 · Pakaian · 45 produk</div>
+            </div>
+          </div>
+          <div class="partner">
+            <div class="partner-logo">KM</div>
+            <div class="partner-body">
+              <div class="partner-name">Katering Muslimah</div>
+              <div class="partner-meta"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>4.8 · Katering · 22 produk</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Area khusus Mitra & Affiliate BAZMalah -->
+      <div class="section">
+        <div class="section-head"><div class="section-title">Area Mitra &amp; Affiliate</div></div>
+        <div class="program-grid">
+          <div class="program">
+            <div class="program-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7l-8 8-4-4"/><path d="M4 5v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2z"/></svg>
+            </div>
+            <h3>Input Produk (Mitra)</h3>
+            <p>Mitra BAZMalah upload produk sendiri — foto, harga, stok, deskripsi.</p>
+            <button class="cta" data-need="market:mitra,manajemen_market" data-demo="Input Produk Mitra">
+              Kelola <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </button>
+          </div>
+          <div class="program">
+            <div class="program-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>
+            </div>
+            <h3>Pembukuan Mitra</h3>
+            <p>Catatan penjualan, komisi, dan pencairan dana mitra BAZMalah.</p>
+            <button class="cta" data-need="market:mitra,manajemen_market" data-demo="Pembukuan Mitra">
+              Lihat <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </button>
+          </div>
+          <div class="program">
+            <div class="program-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/></svg>
+            </div>
+            <h3>Daftar Affiliate</h3>
+            <p>Gabung program affiliate BAZMalah — promosikan produk mitra &amp; dapat komisi.</p>
+            <button class="cta" data-need="market:affiliate,mitra,manajemen_market" data-demo="Daftar Affiliate BAZMalah">
+              Gabung <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </button>
+          </div>
+          <div class="program">
+            <div class="program-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+            </div>
+            <h3>Dashboard Affiliate</h3>
+            <p>Lihat link promosi, klik, konversi, dan komisi yang terkumpul.</p>
+            <button class="cta" data-need="market:affiliate,manajemen_market" data-demo="Dashboard Affiliate">
+              Buka <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
             </button>
           </div>
         </div>
+      </div>
 
-        <div class="product-card">
-          <div class="product-image">
-            <span class="product-badge">Best</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h12l2 8H4z"/><path d="M4 10h16v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M8 14h8"/></svg>
+      <div class="section">
+        <div class="banner">
+          <div class="banner-text">
+            <h3>Buka Toko di BAZMalah</h3>
+            <p>UMKM jamaah NU bisa bergabung sebagai mitra. Gratis biaya pendaftaran.</p>
           </div>
-          <div class="product-body">
-            <div class="product-cat">Makanan</div>
-            <div class="product-name">Sambal Bu Yati</div>
-            <div class="product-meta">
-              <span class="product-price">Rp 25.000</span>
-              <span class="product-rating"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg> 4.9</span>
+          <button class="banner-btn" data-need="market:mitra,manajemen_market" data-demo="Daftar Mitra BAZMalah">Daftar Mitra</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== NUShop Panel ========== -->
+    <div class="market-panel" data-market-panel="nushop">
+      <div class="section">
+        <div class="section-head">
+          <div class="section-title">Produk NUShop</div>
+          <button class="section-link" data-demo="Lihat Semua Produk NUShop">Lihat semua</button>
+        </div>
+        <div class="product-grid">
+          <div class="product-card">
+            <div class="product-image">
+              <span class="product-badge">Stok</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h12l2 8H4z"/><path d="M4 10h16v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/></svg>
             </div>
-            <button class="product-btn" data-need="market:jamaah_market,manajemen_market" data-demo="Tambah Sambal ke Keranjang">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
-              Keranjang
+            <div class="product-body">
+              <div class="product-cat">Sembako</div>
+              <div class="product-name">Minyak Goreng 2L</div>
+              <div class="product-meta">
+                <span class="product-price">Rp 38.000</span>
+                <span class="product-rating">Stok: 120</span>
+              </div>
+              <button class="product-btn" data-need="market:jamaah_market,kasir_nushop,manajemen_market" data-demo="Beli Minyak Goreng">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
+                Beli
+              </button>
+            </div>
+          </div>
+          <div class="product-card">
+            <div class="product-image">
+              <span class="product-badge">Best</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h12l2 8H4z"/><path d="M4 10h16v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M8 14h8"/></svg>
+            </div>
+            <div class="product-body">
+              <div class="product-cat">Makanan</div>
+              <div class="product-name">Gula Pasir 1kg</div>
+              <div class="product-meta">
+                <span class="product-price">Rp 16.000</span>
+                <span class="product-rating">Stok: 85</span>
+              </div>
+              <button class="product-btn" data-need="market:jamaah_market,kasir_nushop,manajemen_market" data-demo="Beli Gula Pasir">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
+                Beli
+              </button>
+            </div>
+          </div>
+          <div class="product-card">
+            <div class="product-image">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            </div>
+            <div class="product-body">
+              <div class="product-cat">Buku</div>
+              <div class="product-name">Buku Yasin NUShop</div>
+              <div class="product-meta">
+                <span class="product-price">Rp 12.000</span>
+                <span class="product-rating">Stok: 340</span>
+              </div>
+              <button class="product-btn" data-need="market:jamaah_market,kasir_nushop,manajemen_market" data-demo="Beli Buku Yasin">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
+                Beli
+              </button>
+            </div>
+          </div>
+          <div class="product-card">
+            <div class="product-image">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7l-8 8-4-4"/><path d="M4 5v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2z"/></svg>
+            </div>
+            <div class="product-body">
+              <div class="product-cat">Pakaian</div>
+              <div class="product-name">Sarung NU NUShop</div>
+              <div class="product-meta">
+                <span class="product-price">Rp 95.000</span>
+                <span class="product-rating">Stok: 45</span>
+              </div>
+              <button class="product-btn" data-need="market:jamaah_market,kasir_nushop,manajemen_market" data-demo="Beli Sarung NU">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
+                Beli
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stok Inventory Multi-Gudang -->
+      <div class="section">
+        <div class="section-head"><div class="section-title">Alur Stok Inventory NUShop</div></div>
+        <div class="card">
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div class="row" style="padding:10px 12px">
+              <div class="row-date" style="background:linear-gradient(135deg,var(--green-600),var(--green-700));color:#fff;font-size:.62rem;font-weight:800">PC</div>
+              <div class="row-body">
+                <div class="row-title">Gudang Pusat · NUMart Centre (PC)</div>
+                <div class="row-sub">Sumber stok utama · 12.400 SKU</div>
+              </div>
+            </div>
+            <div style="text-align:center;color:var(--muted);font-size:1.2rem">↓</div>
+            <div class="row" style="padding:10px 12px">
+              <div class="row-date" style="background:var(--green-100);color:var(--green-700);font-size:.6rem;font-weight:800">MWC</div>
+              <div class="row-body">
+                <div class="row-title">Gudang Cabang · MWC / NUMart</div>
+                <div class="row-sub">Distribusi ke wilayah · 3 cabang aktif</div>
+              </div>
+            </div>
+            <div style="text-align:center;color:var(--muted);font-size:1.2rem">↓</div>
+            <div class="row" style="padding:10px 12px">
+              <div class="row-date" style="background:var(--green-50);color:var(--green-700);font-size:.55rem;font-weight:800">SHOP</div>
+              <div class="row-body">
+                <div class="row-title">NUShop (Toko)</div>
+                <div class="row-sub">Penjualan ke jamaah · 3 toko aktif</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Area Kasir & Manajemen NUShop -->
+      <div class="section">
+        <div class="section-head"><div class="section-title">Area Kasir &amp; Manajemen NUShop</div></div>
+        <div class="program-grid">
+          <div class="program">
+            <div class="program-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h4M14 10h4M6 14h8"/></svg>
+            </div>
+            <h3>Sistem Kasir (POS)</h3>
+            <p>Aplikasi kasir NUShop untuk transaksi langsung di toko.</p>
+            <button class="cta" data-need="market:kasir_nushop,manajemen_market" data-demo="Buka Kasir NUShop">
+              Buka <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </button>
+          </div>
+          <div class="program">
+            <div class="program-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7l-8 8-4-4"/><path d="M4 5v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2z"/></svg>
+            </div>
+            <h3>Input Produk NUShop</h3>
+            <p>Tambah &amp; atur produk NUShop, harga, kategori, foto.</p>
+            <button class="cta" data-need="market:manajemen_market" data-demo="Input Produk NUShop">
+              Kelola <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </button>
+          </div>
+          <div class="program">
+            <div class="program-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1.5-5h15L21 9"/><path d="M3 9v10a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V9"/><path d="M9 9v3a3 3 0 0 0 6 0V9"/></svg>
+            </div>
+            <h3>Stok Inventory Multi-Gudang</h3>
+            <p>Kelola stok di PC, Cabang MWC/NUMart, dan NUShop. Mutasi &amp; transfer.</p>
+            <button class="cta" data-need="market:manajemen_market" data-demo="Kelola Stok Inventory">
+              Kelola <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </button>
+          </div>
+          <div class="program">
+            <div class="program-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>
+            </div>
+            <h3>Pembukuan NUShop</h3>
+            <p>Laporan penjualan, laba, dan pembukuan toko per cabang.</p>
+            <button class="cta" data-need="market:manajemen_market" data-demo="Pembukuan NUShop">
+              Lihat <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
             </button>
           </div>
         </div>
+      </div>
 
-        <div class="product-card">
-          <div class="product-image">
-            <span class="product-badge">New</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7l-8 8-4-4"/><path d="M4 5v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2z"/></svg>
-          </div>
-          <div class="product-body">
-            <div class="product-cat">Pakaian</div>
-            <div class="product-name">Sarung NU Premium</div>
-            <div class="product-meta">
-              <span class="product-price">Rp 125.000</span>
-              <span class="product-rating"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg> 4.7</span>
-            </div>
-            <button class="product-btn" data-need="market:jamaah_market,manajemen_market" data-demo="Tambah Sarung ke Keranjang">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
-              Keranjang
-            </button>
-          </div>
+      <div class="section">
+        <div class="section-head">
+          <div class="section-title">Daftar Toko NUShop</div>
+          <button class="section-link" data-demo="Lihat Semua NUShop">Lihat semua</button>
         </div>
-
-        <div class="product-card">
-          <div class="product-image">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-          </div>
-          <div class="product-body">
-            <div class="product-cat">Buku</div>
-            <div class="product-name">Buku Yasin &amp; Tahlil</div>
-            <div class="product-meta">
-              <span class="product-price">Rp 15.000</span>
-              <span class="product-rating"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg> 4.9</span>
+        <div class="partner-grid">
+          <div class="partner">
+            <div class="partner-logo" style="background:linear-gradient(135deg,var(--green-600),var(--green-700))">S</div>
+            <div class="partner-body">
+              <div class="partner-name">NUMart Sleman</div>
+              <div class="partner-meta"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>4.9 · Toko Pusat · Sleman</div>
             </div>
-            <button class="product-btn" data-need="market:jamaah_market,manajemen_market" data-demo="Tambah Buku Yasin ke Keranjang">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
-              Keranjang
-            </button>
+          </div>
+          <div class="partner">
+            <div class="partner-logo" style="background:linear-gradient(135deg,var(--green-600),var(--green-700))">D</div>
+            <div class="partner-body">
+              <div class="partner-name">NUMart Depok</div>
+              <div class="partner-meta"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>4.8 · Cabang · Depok, Sleman</div>
+            </div>
+          </div>
+          <div class="partner">
+            <div class="partner-logo" style="background:linear-gradient(135deg,var(--green-600),var(--green-700))">G</div>
+            <div class="partner-body">
+              <div class="partner-name">NUMart Godean</div>
+              <div class="partner-meta"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>4.7 · Cabang · Godean, Sleman</div>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
+    <!-- ========== Pembayaran & Delivery (shared) ========== -->
     <div class="section">
-      <div class="section-head">
-        <div class="section-title">BAZMalah · UMKM Jamaah</div>
-        <button class="section-link" data-demo="Lihat Semua Mitra BAZMalah">Lihat semua</button>
-      </div>
-      <div class="partner-grid">
-        <div class="partner">
-          <div class="partner-logo">WB</div>
-          <div class="partner-body">
-            <div class="partner-name">Warung Barokah</div>
-            <div class="partner-meta"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>4.8 · Makanan · 128 produk</div>
+      <div class="section-head"><div class="section-title">Pembayaran &amp; Delivery</div></div>
+      <div class="info-2col">
+        <div class="info-card">
+          <h3>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M2 10h20"/></svg>
+            Metode Pembayaran
+          </h3>
+          <div class="payment-list">
+            <span class="pay-tag">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+              QRIS
+            </span>
+            <span class="pay-tag">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10l9-7 9 7v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V10z"/></svg>
+              Transfer Rekening
+            </span>
+            <span class="pay-tag">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9 10h6M9 14h6"/></svg>
+              Cash / Tunai
+            </span>
           </div>
         </div>
-        <div class="partner">
-          <div class="partner-logo">SM</div>
-          <div class="partner-body">
-            <div class="partner-name">Toko Sembako Makmur</div>
-            <div class="partner-meta"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>4.7 · Sembako · 210 produk</div>
+        <div class="info-card">
+          <h3>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 18h14M5 18v-4a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v4M9 10V6a3 3 0 0 1 6 0v4"/></svg>
+            Delivery Service
+          </h3>
+          <div class="delivery-list">
+            <span class="deliv-tag">Kurir Lokal</span>
+            <span class="deliv-tag">Gojek</span>
+            <span class="deliv-tag">Shopee Express</span>
+            <span class="deliv-tag">JNE</span>
+            <span class="deliv-tag">J&amp;T</span>
           </div>
         </div>
-        <div class="partner">
-          <div class="partner-logo">AB</div>
-          <div class="partner-body">
-            <div class="partner-name">Konveksi Al-Barokah</div>
-            <div class="partner-meta"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>4.9 · Pakaian · 45 produk</div>
-          </div>
-        </div>
-        <div class="partner">
-          <div class="partner-logo">KM</div>
-          <div class="partner-body">
-            <div class="partner-name">Katering Muslimah</div>
-            <div class="partner-meta"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>4.8 · Katering · 22 produk</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="section-head">
-        <div class="section-title">NUShop · Toko NU</div>
-        <button class="section-link" data-demo="Lihat Semua NUShop">Lihat semua</button>
-      </div>
-      <div class="partner-grid">
-        <div class="partner">
-          <div class="partner-logo" style="background:linear-gradient(135deg,var(--green-600),var(--green-700))">S</div>
-          <div class="partner-body">
-            <div class="partner-name">NUMart Sleman</div>
-            <div class="partner-meta"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>4.9 · Toko Pusat · Sleman</div>
-          </div>
-        </div>
-        <div class="partner">
-          <div class="partner-logo" style="background:linear-gradient(135deg,var(--green-600),var(--green-700))">D</div>
-          <div class="partner-body">
-            <div class="partner-name">NUMart Depok</div>
-            <div class="partner-meta"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>4.8 · Cabang · Depok, Sleman</div>
-          </div>
-        </div>
-        <div class="partner">
-          <div class="partner-logo" style="background:linear-gradient(135deg,var(--green-600),var(--green-700))">G</div>
-          <div class="partner-body">
-            <div class="partner-name">NUMart Godean</div>
-            <div class="partner-meta"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>4.7 · Cabang · Godean, Sleman</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="banner">
-        <div class="banner-text">
-          <h3>Buka Toko di MaNUSya Market</h3>
-          <p>UMKM jamaah NU bisa bergabung di BAZMalah. Gratis biaya pendaftaran.</p>
-        </div>
-        <button class="banner-btn" data-need="market:mitra,manajemen_market" data-demo="Daftar Mitra BAZMalah">Daftar Mitra</button>
       </div>
     </div>
   </section>
@@ -1343,12 +1746,12 @@ main{max-width:var(--maxw);margin:0 auto;padding:32px 24px 56px}
   </button>
 </nav>
 
-<!-- ================= MODAL ================= -->
+<!-- ================= MODAL LOGIN ================= -->
 <div class="modal-backdrop" id="loginModal">
   <div class="modal">
     <div class="modal-head">
       <div>
-        <h2>Masuk ke MaNUSya</h2>
+        <h2>Login MaNUSya</h2>
         <p>Pilih area layanan, lalu pilih peran Anda</p>
       </div>
       <button class="modal-close" onclick="closeModal()" aria-label="Tutup">
@@ -1373,6 +1776,8 @@ const ICONS = {
   santri: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.7 6 6.3.6-4.8 4.3 1.5 6.1L12 16.9 6.3 20l1.5-6.1L3 9.6l6.3-.6z"/></svg>',
   users: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2 21v-1c0-3.5 3-6 7-6s7 2.5 7 6v1"/><circle cx="17" cy="8" r="3"/><path d="M15 15c2.5.5 4 2.5 4 5v1"/></svg>',
   user: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg>',
+  kasir: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h4M14 10h4M6 14h8"/></svg>',
+  affiliate: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/></svg>',
   info: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v5h1"/></svg>',
   check: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>',
   arrow: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>'
@@ -1382,8 +1787,8 @@ const SECTIONS = {
   masjid: {
     label: 'Masjid',
     icon: ICONS.masjid,
-    prompt: 'Pengurus masjid? Masuk sebagai <strong>Admin Masjid</strong> untuk mengelola profil, jadwal, dan kajian.',
-    note: 'Jadwal salat, kajian, dan berita dapat dilihat tanpa masuk. Login hanya untuk Admin Masjid yang ingin mengelola konten.',
+    prompt: 'Pengurus masjid? Login sebagai <strong>Admin Masjid</strong> untuk mengelola profil, jadwal, dan kajian.',
+    note: 'Jadwal salat, kajian, dan berita dapat dilihat tanpa login. Login hanya untuk Admin Masjid yang ingin mengelola konten.',
     roles: {
       admin_masjid: { name: 'Admin Masjid', desc: 'Kelola profil, jadwal, kajian, berita', icon: ICONS.shield }
     }
@@ -1391,8 +1796,8 @@ const SECTIONS = {
   tpq: {
     label: 'TPQ',
     icon: ICONS.book,
-    prompt: 'Pengajar, santri, atau orang tua? Masuk ke <strong>Area TPQ</strong> sesuai peran Anda.',
-    note: 'Info TPQ & jadwal bisa dilihat tanpa masuk. Untuk daftar, kelola data, atau lihat nilai — perlu masuk sesuai peran.',
+    prompt: 'Pengajar, santri, atau orang tua? Login ke <strong>Area TPQ</strong> sesuai peran Anda.',
+    note: 'Info TPQ & jadwal bisa dilihat tanpa login. Untuk daftar, kelola data, atau lihat nilai — perlu login sesuai peran.',
     roles: {
       manajemen_tpq: { name: 'Manajemen', desc: 'Kelola seluruh TPQ', icon: ICONS.shield },
       mualim: { name: "Mu'allim", desc: 'Pengajar · nilai & absensi', icon: ICONS.mualim },
@@ -1403,19 +1808,21 @@ const SECTIONS = {
   market: {
     label: 'Market',
     icon: ICONS.store,
-    prompt: 'Ingin belanja atau buka toko? Masuk ke <strong>Market</strong> sesuai peran Anda.',
-    note: 'Produk & toko dapat dilihat tanpa masuk. Untuk belanja atau kelola produk, perlu masuk sesuai peran.',
+    prompt: 'Ingin belanja, buka toko, atau jadi affiliate? Login ke <strong>Market</strong> sesuai peran Anda.',
+    note: 'Produk & toko dapat dilihat tanpa login. Untuk belanja, kelola produk, kasir, atau affiliate — perlu login sesuai peran.',
     roles: {
-      manajemen_market: { name: 'Manajemen', desc: 'Kelola produk, mitra, order', icon: ICONS.shield },
-      mitra: { name: 'Mitra UMKM', desc: 'Kelola produk sendiri', icon: ICONS.store },
+      manajemen_market: { name: 'Manajemen Market', desc: 'Kelola BAZMalah & NUShop', icon: ICONS.shield },
+      kasir_nushop: { name: 'Kasir NUShop', desc: 'POS & transaksi NUShop', icon: ICONS.kasir },
+      mitra: { name: 'Mitra BAZMalah', desc: 'Input produk & pembukuan sendiri', icon: ICONS.store },
+      affiliate: { name: 'Affiliate BAZMalah', desc: 'Promosi & komisi affiliate', icon: ICONS.affiliate },
       jamaah_market: { name: 'Jamaah', desc: 'Belanja & riwayat order', icon: ICONS.user }
     }
   },
   peduli: {
     label: 'Peduli',
     icon: ICONS.heart,
-    prompt: 'Ingin menyalurkan donasi? Masuk sebagai <strong>Donatur</strong> atau <strong>Manajemen ZIS</strong>.',
-    note: 'Program ZIS dapat dilihat tanpa masuk. Donasi & penyaluran perlu login sesuai peran.',
+    prompt: 'Ingin menyalurkan donasi? Login sebagai <strong>Donatur</strong> atau <strong>Manajemen ZIS</strong>.',
+    note: 'Program ZIS dapat dilihat tanpa login. Donasi & penyaluran perlu login sesuai peran.',
     roles: {
       manajemen_zis: { name: 'Manajemen', desc: 'Kelola program & penyaluran', icon: ICONS.shield },
       donatur: { name: 'Donatur', desc: 'Donasi & lihat riwayat', icon: ICONS.heart }
@@ -1487,13 +1894,13 @@ function loginAs(section, roleKey){
   updateHeaderChip();
   renderPrompts();
   closeModal();
-  toast(`Masuk sebagai ${role.name} · ${SECTIONS[section].label}`);
+  toast(`Login sebagai ${role.name} · ${SECTIONS[section].label}`);
 }
 function logout(){
   login = null;
   updateHeaderChip();
   renderPrompts();
-  toast('Anda telah keluar');
+  toast('Anda telah logout');
 }
 function updateHeaderChip(){
   const chip = document.getElementById('userChip');
@@ -1515,20 +1922,20 @@ function renderPrompts(){
       el.classList.add('logged-in');
       el.innerHTML = `
         ${ICONS.check}
-        <p>Anda masuk sebagai <strong>${login.name}</strong> di area <strong>${s.label}</strong>.</p>
-        <button onclick="logout()">Keluar</button>
+        <p>Anda login sebagai <strong>${login.name}</strong> di area <strong>${s.label}</strong>.</p>
+        <button onclick="logout()">Logout</button>
       `;
     } else if(login){
       el.innerHTML = `
         ${ICONS.info}
-        <p>Anda masuk di <strong>${SECTIONS[login.section].label}</strong>. Untuk mengakses fitur ${s.label}, keluar dulu.</p>
-        <button onclick="logout()">Keluar</button>
+        <p>Anda login di <strong>${SECTIONS[login.section].label}</strong>. Untuk mengakses fitur ${s.label}, logout dulu.</p>
+        <button onclick="logout()">Logout</button>
       `;
     } else {
       el.innerHTML = `
         ${ICONS.user}
         <p>${s.prompt}</p>
-        <button onclick="openModal('${section}')">Masuk ${s.label}</button>
+        <button onclick="openModal('${section}')">Login ${s.label}</button>
       `;
     }
   });
@@ -1624,12 +2031,12 @@ function toast(msg){
 
 function gateAction(section, roles, demoLabel){
   if(!login){
-    toast(`Masuk ke ${SECTIONS[section].label} untuk melanjutkan`);
+    toast(`Login ke ${SECTIONS[section].label} untuk melanjutkan`);
     openModal(section);
     return false;
   }
   if(login.section !== section){
-    toast(`Anda masuk di ${SECTIONS[login.section].label}. Fitur ini di ${SECTIONS[section].label}.`);
+    toast(`Anda login di ${SECTIONS[login.section].label}. Fitur ini di ${SECTIONS[section].label}.`);
     openModal(section);
     return false;
   }
@@ -1642,9 +2049,21 @@ function gateAction(section, roles, demoLabel){
   return true;
 }
 
+// Market sub-tab
+function switchMarketTab(tab){
+  document.querySelectorAll('[data-market-tab]').forEach(b =>
+    b.classList.toggle('active', b.dataset.marketTab === tab));
+  document.querySelectorAll('[data-market-panel]').forEach(p =>
+    p.classList.toggle('active', p.dataset.marketPanel === tab));
+}
+
 document.addEventListener('click', (e) => {
   const navBtn = e.target.closest('[data-nav]');
   if(navBtn){ e.preventDefault(); goTo(navBtn.dataset.nav); return; }
+
+  // Market sub-tab
+  const marketTab = e.target.closest('[data-market-tab]');
+  if(marketTab){ switchMarketTab(marketTab.dataset.marketTab); return; }
 
   const tabBtn = e.target.closest('.modal-tab');
   if(tabBtn){
