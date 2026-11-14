@@ -4,32 +4,39 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>MaNUSya — Masjid NU Sleman Berdaya</title>
-<meta name="theme-color" content="#2FA56F" />
+<meta name="theme-color" content="#0e5e3a" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
 <style>
+/* ============ RESET & VARS ============ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
 :root{
-  --green-50:#F0FAF4;--green-100:#DCF3E5;--green-200:#B8E6CC;--green-300:#8CD5AE;
-  --green-400:#5CC08D;--green-500:#2FA56F;--green-600:#1F8757;--green-700:#156A44;
-  --green-800:#0E4F33;--green-900:#0B3D28;
-  --ink:#0F2A1F;--ink-soft:#4A6B5C;--muted:#8AA79A;--line:#E2EFE8;
+  --em-950:#041f15;--em-900:#052e1f;--em-800:#0e5e3a;--em-700:#14764a;
+  --em-600:#1a8f5c;--em-500:#22a86d;--em-400:#4cc28a;--em-300:#7dd4a9;
+  --em-200:#b3e5c7;--em-100:#daf2e2;--em-50:#edf9f1;
+  --gold-700:#8a6b1c;--gold-600:#a88528;--gold-500:#c9a961;
+  --gold-400:#dfc77f;--gold-300:#ebd9a8;--gold-100:#f5efdc;
+  --cream-50:#fbf8f0;--cream-100:#f5efdc;--cream-200:#ede4c9;
+  --ink:#0f2a1f;--ink-soft:#4a6b5c;--muted:#8aa79a;
+  --line:#e2efe8;--line-soft:#f0f5f2;
   --white:#fff;
-  --radius:16px;--radius-sm:10px;--radius-lg:22px;
-  --shadow-sm:0 1px 2px rgba(15,42,31,.05);
-  --shadow:0 4px 16px rgba(15,42,31,.06);
-  --shadow-lg:0 12px 32px rgba(15,42,31,.12);
-  --header-h:64px;--maxw:1120px;
+  --radius:16px;--radius-sm:10px;--radius-lg:24px;--radius-xl:28px;
+  --shadow-sm:0 1px 3px rgba(14,94,58,.06);
+  --shadow:0 4px 16px rgba(14,94,58,.08);
+  --shadow-lg:0 12px 40px rgba(14,94,58,.12);
+  --shadow-xl:0 24px 60px rgba(14,94,58,.15);
+  --header-h:72px;--maxw:1200px;
+  --font-body:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --font-display:'Playfair Display',Georgia,serif;
 }
 body{
-  font-family:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
-  color:var(--ink);line-height:1.55;
+  font-family:var(--font-body);color:var(--ink);line-height:1.6;
   -webkit-font-smoothing:antialiased;padding-bottom:24px;
-  background-color:#F5FAF7;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%232FA56F' stroke-width='0.5' stroke-opacity='0.08'%3E%3Cpath d='M40 10 L46 34 L70 40 L46 46 L40 70 L34 46 L10 40 L34 34 Z'/%3E%3C/g%3E%3C/svg%3E");
-  background-size:80px 80px;
+  background-color:var(--cream-50);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='none' stroke='%230e5e3a' stroke-width='0.4' stroke-opacity='0.06'%3E%3Cpath d='M60 15 L69 51 L105 60 L69 69 L60 105 L51 69 L15 60 L51 51 Z'/%3E%3Ccircle cx='60' cy='60' r='30'/%3E%3C/g%3E%3C/svg%3E");
+  background-size:120px 120px;
 }
 img{max-width:100%;display:block}
 button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
@@ -38,655 +45,859 @@ ul{list-style:none}
 svg{display:block}
 
 /* ============ HEADER ============ */
-.header{position:sticky;top:0;z-index:50;
-  background:rgba(255,255,255,.95);
-  backdrop-filter:saturate(140%) blur(14px);
+.header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(255,255,255,.94);
+  backdrop-filter:saturate(140%) blur(16px);
   border-bottom:1px solid var(--line);
-  box-shadow:0 2px 12px rgba(11,61,40,.05)}
-.header-inner{max-width:var(--maxw);margin:0 auto;height:var(--header-h);
-  display:flex;align-items:center;gap:18px;padding:0 24px}
-.brand{display:flex;align-items:center;gap:12px;margin-right:auto;min-width:0;cursor:pointer}
-.brand-mark{width:44px;height:44px;flex:none;border-radius:14px;overflow:hidden;
-  box-shadow:0 4px 10px rgba(47,165,111,.22);background:var(--green-500)}
+  box-shadow:0 2px 16px rgba(14,94,58,.05);
+}
+.header-inner{
+  max-width:var(--maxw);margin:0 auto;height:var(--header-h);
+  display:flex;align-items:center;gap:20px;padding:0 28px;
+}
+.brand{display:flex;align-items:center;gap:14px;margin-right:auto;min-width:0;cursor:pointer}
+.brand-mark{
+  width:48px;height:48px;flex:none;border-radius:14px;overflow:hidden;
+  background:linear-gradient(135deg,var(--em-700),var(--em-800));
+  box-shadow:0 6px 16px rgba(14,94,58,.28);
+  display:grid;place-items:center;
+}
 .brand-mark img{width:100%;height:100%;object-fit:cover}
 .brand-fallback{display:none;width:100%;height:100%}
 .brand-mark.fallback .brand-fallback{display:block}
 .brand-text{display:flex;flex-direction:column;line-height:1.15;min-width:0}
-.brand-name{font-weight:800;font-size:1.1rem;letter-spacing:-.015em;color:var(--green-800)}
-.brand-tag{font-size:.74rem;color:var(--ink-soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brand-name{font-weight:800;font-size:1.25rem;letter-spacing:-.02em;color:var(--em-900)}
+.brand-tag{font-size:.72rem;color:var(--ink-soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:500}
 
-.nav-desktop{display:flex;gap:2px;align-items:center}
-.nav-link{padding:9px 16px;border-radius:999px;font-size:.93rem;font-weight:500;
-  color:var(--ink-soft);transition:.15s;display:inline-flex;align-items:center;gap:7px}
-.nav-link svg{width:16px;height:16px;opacity:.7}
-.nav-link:hover{background:var(--green-50);color:var(--green-700)}
-.nav-link.active{background:var(--green-100);color:var(--green-700);font-weight:600}
+.nav-sep{width:1px;height:32px;background:var(--line);flex:none}
+
+.nav-desktop{display:flex;gap:4px;align-items:center}
+.nav-link{
+  padding:10px 18px;border-radius:10px;
+  font-size:.9rem;font-weight:600;letter-spacing:-.005em;
+  color:var(--ink-soft);transition:.18s;
+  display:inline-flex;align-items:center;gap:8px;
+}
+.nav-link svg{width:16px;height:16px;opacity:.7;transition:.18s}
+.nav-link:hover{background:var(--em-50);color:var(--em-800)}
+.nav-link.active{
+  background:linear-gradient(135deg,var(--em-700),var(--em-800));
+  color:#fff;font-weight:700;
+  box-shadow:0 4px 12px rgba(14,94,58,.25);
+}
 .nav-link.active svg{opacity:1}
-.header-actions{display:flex;align-items:center;gap:10px;margin-left:8px}
-@media(max-width:940px){.nav-desktop{display:none}}
+.header-actions{display:flex;align-items:center;gap:12px;margin-left:4px}
+@media(max-width:980px){
+  .nav-desktop,.nav-sep{display:none}
+  .header-inner{padding:0 20px;gap:12px}
+}
 
 /* ============ USER CHIP ============ */
-.user-chip{display:flex;align-items:center;gap:10px;padding:5px 6px 5px 5px;
-  border-radius:999px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow-sm)}
-.user-avatar{width:34px;height:34px;border-radius:999px;
-  background:linear-gradient(135deg,var(--green-500),var(--green-600));
-  color:#fff;display:grid;place-items:center;font-weight:700;font-size:.85rem}
+.user-chip{
+  display:flex;align-items:center;gap:10px;
+  padding:5px 8px 5px 5px;border-radius:999px;
+  background:#fff;border:1px solid var(--line);
+  box-shadow:var(--shadow-sm);
+}
+.user-avatar{
+  width:36px;height:36px;border-radius:999px;
+  background:linear-gradient(135deg,var(--em-600),var(--em-800));
+  color:#fff;display:grid;place-items:center;
+  font-weight:800;font-size:.92rem;
+  box-shadow:0 2px 8px rgba(14,94,58,.25);
+}
 .user-meta{display:flex;flex-direction:column;line-height:1.15;padding-right:4px}
-.user-name{font-weight:600;font-size:.85rem}
-.user-role{font-size:.68rem;color:var(--muted);font-weight:600}
-.chip-logout{width:32px;height:32px;border-radius:999px;display:grid;place-items:center;
-  color:var(--ink-soft);transition:.15s}
-.chip-logout:hover{background:var(--green-50);color:var(--green-700)}
+.user-name{font-weight:700;font-size:.85rem;color:var(--ink)}
+.user-role{font-size:.68rem;color:var(--gold-600);font-weight:700;letter-spacing:.02em}
+.chip-logout{
+  width:34px;height:34px;border-radius:999px;
+  display:grid;place-items:center;
+  color:var(--ink-soft);transition:.15s;
+}
+.chip-logout:hover{background:#fee;color:#c62828}
 .chip-logout svg{width:16px;height:16px}
 
 /* ============ MAIN ============ */
-main{max-width:var(--maxw);margin:0 auto;padding:32px 24px 56px}
-@media(min-width:960px){main{padding:40px 28px 72px}}
-.page{display:none;animation:fade .25s ease}
+main{max-width:var(--maxw);margin:0 auto;padding:28px 28px 60px}
+@media(min-width:960px){main{padding:36px 32px 72px}}
+.page{display:none;animation:fade .3s ease}
 .page.active{display:block}
-@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 
-.section{margin-bottom:26px}
-.section-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:14px}
-.section-title{font-size:1.08rem;font-weight:700;letter-spacing:-.01em;color:var(--ink)}
-.section-link{font-size:.85rem;color:var(--green-600);font-weight:600;
-  background:none;border:none;cursor:pointer}
+.section{margin-bottom:28px}
+.section-head{
+  display:flex;align-items:baseline;justify-content:space-between;
+  gap:12px;margin-bottom:16px;
+}
+.section-title{
+  font-size:1.15rem;font-weight:800;letter-spacing:-.02em;
+  color:var(--em-900);position:relative;padding-left:14px;
+}
+.section-title::before{
+  content:'';position:absolute;left:0;top:50%;
+  width:4px;height:20px;transform:translateY(-50%);
+  background:linear-gradient(180deg,var(--gold-500),var(--gold-600));
+  border-radius:2px;
+}
+.section-link{
+  font-size:.85rem;color:var(--em-700);font-weight:700;
+  background:none;border:none;cursor:pointer;
+  display:inline-flex;align-items:center;gap:4px;
+  padding:6px 12px;border-radius:8px;transition:.15s;
+}
+.section-link:hover{background:var(--em-50)}
+.section-link::after{content:'→';font-size:.95rem}
 
-.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);
-  box-shadow:var(--shadow-sm);padding:20px}
+.card{
+  background:#fff;border:1px solid var(--line);
+  border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:22px;
+}
 
 /* ============ HERO ============ */
 .hero{
-  display:flex;align-items:center;gap:20px;
-  background:linear-gradient(135deg,#FFFFFF 0%,#EFFAF3 100%);
-  border:1px solid var(--line);border-radius:var(--radius-lg);
-  padding:26px 28px;margin-bottom:26px;position:relative;overflow:hidden;
-  box-shadow:var(--shadow)
+  position:relative;
+  background:
+    radial-gradient(ellipse at 90% 10%, rgba(201,169,97,.18), transparent 55%),
+    radial-gradient(ellipse at 0% 100%, rgba(14,94,58,.06), transparent 60%),
+    linear-gradient(135deg,#ffffff 0%,#edf9f1 55%,#d5edd9 100%);
+  border-radius:var(--radius-xl);
+  padding:36px 36px 40px;
+  margin-bottom:24px;
+  overflow:hidden;
+  border:1px solid rgba(201,169,97,.22);
+  box-shadow:var(--shadow-lg);
+  min-height:260px;
+  display:flex;align-items:center;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cg fill='none' stroke='%230e5e3a' stroke-width='0.6' stroke-opacity='0.07'%3E%3Cpath d='M90 20 L108 72 L160 90 L108 108 L90 160 L72 108 L20 90 L72 72 Z'/%3E%3Ccircle cx='90' cy='90' r='56'/%3E%3Ccircle cx='90' cy='90' r='28'/%3E%3C/g%3E%3C/svg%3E");
+  background-size:180px 180px;pointer-events:none;
 }
 .hero::after{
-  content:'';position:absolute;right:-40px;top:-40px;width:220px;height:220px;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'%3E%3Cg fill='none' stroke='%232FA56F' stroke-width='1' stroke-opacity='0.1'%3E%3Cpath d='M110 20 L132 88 L200 110 L132 132 L110 200 L88 132 L20 110 L88 88 Z'/%3E%3Ccircle cx='110' cy='110' r='70'/%3E%3Ccircle cx='110' cy='110' r='40'/%3E%3C/g%3E%3C/svg%3E");
-  background-size:contain;background-repeat:no-repeat;pointer-events:none
-}
-.hero-badge{
-  width:64px;height:64px;flex:none;border-radius:20px;
-  background:linear-gradient(135deg,var(--green-500),var(--green-600));
-  color:#fff;display:grid;place-items:center;
-  box-shadow:0 8px 20px rgba(47,165,111,.32);
-  position:relative;z-index:1
-}
-.hero-badge svg{width:36px;height:36px}
-.hero-text{position:relative;z-index:1;min-width:0}
-.hero h1{font-size:1.42rem;letter-spacing:-.025em;margin-bottom:6px;
-  color:var(--green-800);font-weight:800;line-height:1.2}
-.hero p{color:var(--ink-soft);font-size:.95rem;max-width:640px}
-.hero p strong{color:var(--green-700);font-weight:700}
-@media(min-width:960px){
-  .hero{padding:34px 36px;gap:24px}
-  .hero-badge{width:76px;height:76px;border-radius:22px}
-  .hero-badge svg{width:42px;height:42px}
-  .hero h1{font-size:1.75rem}
-  .hero p{font-size:1.02rem}
-}
-
-/* ============ PRAYER WRAP (Container Query Root) ============ */
-.prayer-wrap{
-  container-type: inline-size;
-  container-name: prayer;
-}
-
-/* ============ PRAYER LIVE CARD ============ */
-.prayer-live{
-  background:linear-gradient(135deg,var(--green-700) 0%,var(--green-800) 100%);
-  border-radius:var(--radius-lg);padding:18px;
-  color:#fff;position:relative;overflow:hidden;
-  box-shadow:0 12px 32px rgba(21,106,68,.28)
-}
-@media(min-width:960px){.prayer-live{padding:22px}}
-.prayer-live::before{
-  content:'';position:absolute;top:0;right:0;width:45%;height:100%;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cg fill='none' stroke='%23FFFFFF' stroke-width='1' stroke-opacity='0.12'%3E%3Cpath d='M100 20 L112 80 L172 100 L112 120 L100 180 L88 120 L28 100 L88 80 Z'/%3E%3Ccircle cx='100' cy='100' r='60'/%3E%3C/g%3E%3C/svg%3E");
+  content:'';position:absolute;
+  right:-40px;bottom:-20px;
+  width:55%;height:95%;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 400 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%230e5e3a' opacity='0.15'%3E%3Crect x='0' y='240' width='400' height='60'/%3E%3Cpath d='M200 80 Q150 110 150 170 L250 170 Q250 110 200 80 Z'/%3E%3Ccircle cx='200' cy='78' r='7' fill='%23c9a961' opacity='0.8'/%3E%3Crect x='140' y='170' width='120' height='70'/%3E%3Cpath d='M155 240 L155 205 Q170 190 185 205 L185 240 Z' fill='%23edf9f1'/%3E%3Cpath d='M215 240 L215 205 Q230 190 245 205 L245 240 Z' fill='%23edf9f1'/%3E%3Crect x='100' y='120' width='20' height='120'/%3E%3Ccircle cx='110' cy='115' r='14'/%3E%3Cpath d='M105 100 L110 88 L115 100 Z' fill='%23c9a961'/%3E%3Crect x='280' y='120' width='20' height='120'/%3E%3Ccircle cx='290' cy='115' r='14'/%3E%3Cpath d='M285 100 L290 88 L295 100 Z' fill='%23c9a961'/%3E%3C/g%3E%3C/svg%3E");
   background-size:contain;background-repeat:no-repeat;
-  background-position:right center;pointer-events:none;opacity:.5
+  background-position:right bottom;
+  pointer-events:none;
+}
+.hero-text{position:relative;z-index:1;max-width:600px}
+.hero h1{
+  font-family:var(--font-display);
+  font-size:1.85rem;line-height:1.2;letter-spacing:-.01em;
+  color:var(--em-900);font-weight:800;margin-bottom:10px;
+}
+.hero h1 span{color:var(--em-700)}
+.hero p{
+  color:var(--ink-soft);font-size:.98rem;line-height:1.55;
+  max-width:520px;margin-bottom:20px;
+}
+.hero p strong{color:var(--em-800);font-weight:700}
+.hero-cta{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 22px;border-radius:999px;
+  background:linear-gradient(135deg,var(--gold-500),var(--gold-600));
+  color:var(--em-900);font-weight:800;font-size:.88rem;
+  box-shadow:0 6px 20px rgba(201,169,97,.35);
+  transition:.15s;letter-spacing:.01em;
+}
+.hero-cta:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(201,169,97,.45)}
+.hero-cta svg{width:16px;height:16px}
+@media(min-width:960px){
+  .hero{padding:52px 52px 56px;min-height:320px}
+  .hero h1{font-size:2.6rem}
+  .hero p{font-size:1.05rem}
 }
 
-.prayer-head{
-  display:flex;align-items:flex-start;justify-content:space-between;
-  gap:12px;margin-bottom:14px;position:relative;z-index:1;flex-wrap:wrap
-}
-.prayer-head-info{min-width:0}
-.prayer-label{
-  font-size:.66rem;font-weight:700;color:var(--green-200);
-  text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px
-}
-.prayer-location{font-size:1rem;font-weight:700;color:#fff;letter-spacing:-.01em}
-.prayer-location small{font-size:.68rem;color:var(--green-200);
-  font-weight:500;margin-left:6px}
-.live-clock{
-  font-family:'Inter',monospace;font-weight:800;font-size:1.5rem;
-  color:#fff;letter-spacing:.02em;
-  font-variant-numeric:tabular-nums;
-  font-feature-settings:'tnum','lnum';
-  text-shadow:0 2px 8px rgba(0,0,0,.15)
-}
-@media(min-width:600px){.live-clock{font-size:1.7rem}}
-@media(min-width:960px){.live-clock{font-size:1.85rem}}
+/* ============ PRAYER CARD ============ */
+.prayer-wrap{container-type:inline-size;container-name:prayer}
 
-.date-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;
-  position:relative;z-index:1}
+.prayer-live{
+  background:
+    radial-gradient(ellipse at 15% 110%, rgba(201,169,97,.15), transparent 55%),
+    linear-gradient(135deg,var(--em-800) 0%,var(--em-900) 100%);
+  border-radius:var(--radius-lg);
+  padding:22px;
+  color:#fff;position:relative;overflow:hidden;
+  box-shadow:0 20px 50px rgba(5,46,31,.35);
+  border:1px solid rgba(201,169,97,.18);
+}
+@media(min-width:960px){.prayer-live{padding:28px}}
+.prayer-live::before{
+  content:'';position:absolute;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240' viewBox='0 0 240 240'%3E%3Cg fill='none' stroke='%23c9a961' stroke-width='0.8' stroke-opacity='0.1'%3E%3Cpath d='M120 30 L140 90 L200 110 L140 130 L120 190 L100 130 L40 110 L100 90 Z'/%3E%3Ccircle cx='120' cy='110' r='70'/%3E%3C/g%3E%3C/svg%3E");
+  background-size:240px 240px;pointer-events:none;
+}
+.prayer-live::after{
+  content:'';position:absolute;
+  right:0;bottom:0;width:100%;height:100%;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 600 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23c9a961' opacity='0.08'%3E%3Cpath d='M0 120 L0 95 Q30 70 60 95 L60 120 Z'/%3E%3Cpath d='M70 120 L70 90 Q100 60 130 90 L130 120 Z'/%3E%3Cpath d='M300 120 L300 80 Q350 55 400 80 L400 120 Z'/%3E%3Cpath d='M470 120 L470 90 Q500 60 530 90 L530 120 Z'/%3E%3Cpath d='M540 120 L540 95 Q570 70 600 95 L600 120 Z'/%3E%3C/g%3E%3C/svg%3E");
+  background-size:cover;background-position:bottom;pointer-events:none;
+  opacity:.6;
+}
+
+.prayer-left{
+  position:relative;z-index:1;
+  display:flex;flex-direction:column;gap:16px;
+}
+
+/* Date + Clock block */
+.prayer-date-row{
+  display:flex;flex-wrap:wrap;gap:8px;margin-bottom:2px;
+}
 .date-item{
   display:inline-flex;align-items:center;gap:6px;
-  padding:5px 10px;border-radius:6px;
-  background:rgba(255,255,255,.1);
-  border:1px solid rgba(255,255,255,.15);
-  font-size:.75rem;color:#fff;font-weight:500
+  padding:6px 12px;border-radius:8px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(201,169,97,.25);
+  font-size:.78rem;color:#fff;font-weight:500;
 }
-.date-item svg{width:12px;height:12px;color:var(--green-200);flex:none}
-.date-item strong{color:#fff;font-weight:700}
+.date-item svg{width:13px;height:13px;color:var(--gold-400);flex:none}
+.date-item strong{color:var(--gold-400);font-weight:700}
+
+.prayer-main-row{
+  display:grid;grid-template-columns:1fr;gap:14px;
+  align-items:center;
+}
+@media(min-width:768px){
+  .prayer-main-row{
+    grid-template-columns:auto 1fr auto;
+    gap:24px;
+  }
+}
+
+.prayer-clock-col{display:flex;flex-direction:column;gap:4px;min-width:0}
+.prayer-label{
+  font-size:.66rem;font-weight:800;color:var(--gold-400);
+  text-transform:uppercase;letter-spacing:.12em;
+}
+.live-clock{
+  font-family:var(--font-body);font-weight:900;
+  font-size:2.1rem;color:#fff;letter-spacing:-.01em;
+  font-variant-numeric:tabular-nums;font-feature-settings:'tnum','lnum';
+  line-height:1;text-shadow:0 2px 12px rgba(0,0,0,.2);
+}
+.live-clock small{font-size:.5em;color:var(--gold-400);font-weight:700;margin-left:6px;letter-spacing:.05em}
+@media(min-width:768px){.live-clock{font-size:2.4rem}}
+
+.prayer-times-col{min-width:0}
+.prayer-location{
+  font-size:.78rem;font-weight:700;color:var(--gold-400);
+  text-transform:uppercase;letter-spacing:.1em;
+  margin-bottom:8px;display:flex;align-items:center;gap:6px;
+}
+.prayer-location svg{width:13px;height:13px}
+.prayer-location small{color:var(--em-300);font-weight:500;letter-spacing:.02em;text-transform:none;font-size:.75rem}
 
 .prayer-grid-live{
   display:grid;grid-template-columns:repeat(5,minmax(0,1fr));
-  gap:5px;position:relative;z-index:1;margin-bottom:14px
+  gap:4px;
 }
 .prayer-item-live{
   padding:8px 2px;border-radius:8px;
-  background:rgba(255,255,255,.08);
-  border:1px solid rgba(255,255,255,.12);
-  text-align:center;transition:.2s;min-width:0
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+  text-align:center;transition:.2s;min-width:0;
+  position:relative;
 }
-.prayer-item-live:hover{background:rgba(255,255,255,.12)}
+.prayer-item-live::before{
+  content:'';display:block;
+  width:18px;height:18px;margin:0 auto 4px;
+  background-size:contain;background-repeat:no-repeat;
+  background-position:center;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ebd9a8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='4'/%3E%3Cpath d='M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41'/%3E%3C/svg%3E");
+  opacity:.9;
+}
+.prayer-item-live:nth-child(4)::before,
+.prayer-item-live:nth-child(5)::before{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ebd9a8' stroke='%23ebd9a8' stroke-width='1'%3E%3Cpath d='M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z'/%3E%3C/svg%3E");
+}
+.prayer-item-live:hover{background:rgba(255,255,255,.1)}
 .prayer-item-live.now{
-  background:var(--green-400);color:var(--green-900);
-  border-color:var(--green-300);
-  box-shadow:0 0 20px rgba(92,192,141,.5);
-  transform:translateY(-1px)
+  background:linear-gradient(135deg,var(--gold-500),var(--gold-600));
+  color:var(--em-900);
+  border-color:var(--gold-400);
+  box-shadow:0 6px 20px rgba(201,169,97,.45);
+  transform:translateY(-2px);
 }
+.prayer-item-live.now::before{filter:brightness(0)}
 .prayer-item-live .p-name{
   font-size:.55rem;font-weight:700;text-transform:uppercase;
-  letter-spacing:.03em;opacity:.7;margin-bottom:2px;
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis
+  letter-spacing:.05em;opacity:.85;margin-bottom:2px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
 }
-.prayer-item-live.now .p-name{opacity:.9;color:var(--green-900)}
 .prayer-item-live .p-time{
-  font-family:'Inter',monospace;font-size:.8rem;font-weight:800;
-  letter-spacing:-.02em;font-variant-numeric:tabular-nums;
-  font-feature-settings:'tnum';
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis
+  font-size:.82rem;font-weight:800;
+  font-variant-numeric:tabular-nums;font-feature-settings:'tnum';
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
 }
 @media(min-width:480px){
   .prayer-grid-live{gap:6px}
-  .prayer-item-live{padding:9px 3px}
+  .prayer-item-live{padding:10px 4px}
   .prayer-item-live .p-name{font-size:.6rem}
-  .prayer-item-live .p-time{font-size:.88rem}
+  .prayer-item-live .p-time{font-size:.92rem}
 }
 @media(min-width:768px){
-  .prayer-grid-live{gap:8px}
-  .prayer-item-live{padding:10px 6px}
-  .prayer-item-live .p-name{font-size:.65rem}
-  .prayer-item-live .p-time{font-size:.95rem}
+  .prayer-item-live{padding:12px 6px}
+  .prayer-item-live .p-name{font-size:.62rem}
+  .prayer-item-live .p-time{font-size:1rem}
 }
 
+.prayer-next-col{
+  display:flex;flex-direction:column;gap:6px;
+  padding:12px 14px;border-radius:10px;
+  background:rgba(201,169,97,.08);
+  border:1px solid rgba(201,169,97,.25);
+  min-width:180px;
+}
+.prayer-next-label{
+  font-size:.66rem;font-weight:700;color:var(--em-200);
+  text-transform:uppercase;letter-spacing:.1em;
+  display:flex;align-items:center;gap:5px;
+}
+.prayer-next-label svg{width:12px;height:12px;color:var(--gold-400)}
+.prayer-next-name{
+  font-size:1rem;font-weight:800;color:#fff;
+}
 .countdown-bar{
-  display:flex;align-items:center;justify-content:space-between;
-  gap:10px;padding:9px 12px;border-radius:8px;
-  background:rgba(255,255,255,.08);
-  border:1px solid rgba(255,255,255,.15);
-  position:relative;z-index:1;flex-wrap:wrap
+  display:flex;flex-direction:column;gap:2px;
 }
-.countdown-label{font-size:.78rem;color:var(--green-100);font-weight:500}
-.countdown-label strong{color:#fff;font-weight:700}
+.countdown-label{display:none}
 .countdown-value{
-  font-family:'Inter',monospace;font-weight:800;font-size:.95rem;
-  color:#fff;letter-spacing:.03em;
-  font-variant-numeric:tabular-nums;
-  font-feature-settings:'tnum'
+  font-family:var(--font-body);font-weight:800;
+  font-size:1.15rem;color:var(--gold-400);letter-spacing:.02em;
+  font-variant-numeric:tabular-nums;font-feature-settings:'tnum';
+  text-shadow:0 0 20px rgba(201,169,97,.4);
+}
+.prayer-next-suffix{
+  font-size:.68rem;color:var(--em-300);font-weight:500;
 }
 
-/* ============ HIJRI CALENDAR (hidden by default, shown on wide container) ============ */
+/* Hijri calendar (hidden by default) */
 .prayer-right{
   display:none;
-  background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(201,169,97,.18);
   border-radius:12px;
   padding:14px;
-  position:relative;
-  z-index:1;
+  position:relative;z-index:1;
 }
 .hijri-title{
-  font-size:.68rem;font-weight:700;color:var(--green-200);
-  text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px
+  font-size:.68rem;font-weight:800;color:var(--gold-400);
+  text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;
 }
 .hijri-month-label{
-  font-size:.9rem;font-weight:700;color:#fff;
+  font-size:.92rem;font-weight:800;color:#fff;
   margin-bottom:10px;padding-bottom:8px;
-  border-bottom:1px solid rgba(255,255,255,.1);
-  letter-spacing:-.01em
+  border-bottom:1px solid rgba(201,169,97,.2);
 }
-.hijri-weekdays{
-  display:grid;grid-template-columns:repeat(7,1fr);
-  gap:3px;margin-bottom:6px
-}
+.hijri-weekdays{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;margin-bottom:6px}
 .hijri-weekdays span{
   font-size:.58rem;font-weight:700;text-align:center;
-  color:var(--green-200);text-transform:uppercase;
-  letter-spacing:.04em;padding:2px 0
+  color:var(--gold-400);text-transform:uppercase;letter-spacing:.04em;padding:2px 0;
 }
-.hijri-grid{
-  display:grid;grid-template-columns:repeat(7,1fr);gap:3px
-}
+.hijri-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
 .hijri-cell{
-  aspect-ratio:1;
-  display:grid;place-items:center;
-  font-size:.72rem;font-weight:600;color:#fff;
-  border-radius:6px;
-  background:rgba(255,255,255,.04);
-  font-variant-numeric:tabular-nums;
-  transition:.15s
+  aspect-ratio:1;display:grid;place-items:center;
+  font-size:.74rem;font-weight:600;color:#fff;
+  border-radius:6px;background:rgba(255,255,255,.03);
+  font-variant-numeric:tabular-nums;transition:.15s;
 }
 .hijri-cell.empty{background:transparent}
-.hijri-cell:not(.empty):hover{background:rgba(255,255,255,.12)}
+.hijri-cell:not(.empty):hover{background:rgba(201,169,97,.2)}
 .hijri-cell.today{
-  background:var(--green-400);color:var(--green-900);
-  font-weight:800;
-  box-shadow:0 0 16px rgba(92,192,141,.5)
+  background:var(--gold-500);color:var(--em-900);font-weight:800;
+  box-shadow:0 0 16px rgba(201,169,97,.5);
 }
-.hijri-note{
-  font-size:.66rem;color:var(--green-200);margin-top:8px;
-  text-align:center;opacity:.8
-}
+.hijri-note{font-size:.66rem;color:var(--gold-300);margin-top:8px;text-align:center;opacity:.8}
 
-/* Container query — 2 columns only when card is wide enough */
-@container prayer (min-width: 620px){
+@container prayer (min-width: 760px){
   .prayer-live{
     display:grid;
-    grid-template-columns:minmax(0,1fr) 260px;
-    gap:22px;
-    align-items:start
+    grid-template-columns:minmax(0,1fr) 280px;
+    gap:24px;
+    align-items:start;
   }
   .prayer-right{display:block}
-  .prayer-live::before{opacity:.2;width:35%}
 }
 
 /* ============ QUICK ACTIONS ============ */
 .quick-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-@media(min-width:720px){.quick-grid{grid-template-columns:repeat(6,1fr);gap:12px}}
-.quick{display:flex;flex-direction:column;align-items:center;gap:9px;
-  padding:16px 10px;border-radius:16px;background:#fff;border:1px solid var(--line);
-  box-shadow:var(--shadow-sm);transition:.18s;text-align:center}
-.quick:hover{transform:translateY(-3px);box-shadow:var(--shadow);
-  border-color:var(--green-200);background:#FCFEFD}
-.quick-icon{width:48px;height:48px;border-radius:14px;
-  background:linear-gradient(135deg,var(--green-50),var(--green-100));
-  color:var(--green-700);display:grid;place-items:center;
-  border:1px solid var(--green-200)}
+@media(min-width:720px){.quick-grid{grid-template-columns:repeat(6,1fr);gap:14px}}
+.quick{
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+  padding:20px 12px;border-radius:var(--radius);
+  background:#fff;border:1px solid var(--line);
+  box-shadow:var(--shadow-sm);transition:.2s;text-align:center;
+  position:relative;overflow:hidden;
+}
+.quick::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,transparent,var(--gold-500),transparent);
+  transform:scaleX(0);transition:.3s;
+}
+.quick:hover{
+  transform:translateY(-4px);box-shadow:var(--shadow-lg);
+  border-color:var(--gold-500);
+}
+.quick:hover::before{transform:scaleX(1)}
+.quick-icon{
+  width:52px;height:52px;border-radius:14px;
+  background:linear-gradient(135deg,var(--em-50),var(--em-100));
+  color:var(--em-700);display:grid;place-items:center;
+  border:1px solid var(--em-100);
+  transition:.2s;
+}
+.quick:hover .quick-icon{
+  background:linear-gradient(135deg,var(--em-700),var(--em-800));
+  color:var(--gold-400);
+  border-color:var(--em-700);
+}
 .quick-icon svg{width:24px;height:24px}
-.quick-label{font-size:.78rem;font-weight:600;color:var(--ink-soft);line-height:1.2}
+.quick-label{
+  font-size:.8rem;font-weight:700;color:var(--em-900);
+  line-height:1.25;letter-spacing:-.005em;
+}
 
 /* ============ LAYOUT SPLIT ============ */
-.layout-split{display:grid;grid-template-columns:1fr;gap:26px}
+.layout-split{display:grid;grid-template-columns:1fr;gap:28px}
 @media(min-width:960px){
-  .layout-split{grid-template-columns:1fr 340px;gap:28px;align-items:start}
+  .layout-split{grid-template-columns:1fr 360px;gap:28px;align-items:start}
   .layout-side{position:sticky;top:calc(var(--header-h) + 20px)}
 }
 .layout-main{min-width:0}
 .layout-side{min-width:0;display:flex;flex-direction:column;gap:22px}
 
 /* ============ ROWS ============ */
-.list{display:flex;flex-direction:column;gap:10px}
-.row{display:flex;gap:14px;align-items:center;padding:14px;
-  background:#fff;border:1px solid var(--line);border-radius:14px;
-  box-shadow:var(--shadow-sm);transition:.15s}
-.row:hover{border-color:var(--green-200);box-shadow:var(--shadow)}
-.row-date{width:56px;height:56px;flex:none;border-radius:14px;
-  background:linear-gradient(135deg,var(--green-100),var(--green-200));
-  color:var(--green-800);display:flex;flex-direction:column;
-  align-items:center;justify-content:center;padding:6px 0;
-  font-weight:700;line-height:1;position:relative;overflow:hidden}
-.row-date::before{
-  content:'';position:absolute;inset:0;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30'%3E%3Cg fill='none' stroke='%23156A44' stroke-width='0.5' stroke-opacity='0.1'%3E%3Cpath d='M15 3 L18 12 L27 15 L18 18 L15 27 L12 18 L3 15 L12 12 Z'/%3E%3C/g%3E%3C/svg%3E");
-  background-size:20px 20px;
+.list{display:flex;flex-direction:column;gap:12px}
+.row{
+  display:flex;gap:16px;align-items:center;padding:16px;
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow-sm);transition:.18s;
 }
-.row-date .d{font-size:1.22rem;position:relative;z-index:1}
-.row-date .m{font-size:.6rem;text-transform:uppercase;letter-spacing:.07em;
-  margin-top:3px;opacity:.85;position:relative;z-index:1}
+.row:hover{
+  border-color:var(--em-200);box-shadow:var(--shadow);
+  transform:translateX(2px);
+}
+.row-date{
+  width:58px;height:58px;flex:none;border-radius:14px;
+  background:linear-gradient(135deg,var(--em-50),var(--em-100));
+  color:var(--em-800);display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:6px 0;font-weight:800;line-height:1;
+  border:1px solid var(--em-100);
+}
+.row-date .d{font-size:1.28rem}
+.row-date .m{
+  font-size:.6rem;text-transform:uppercase;letter-spacing:.08em;
+  margin-top:3px;opacity:.85;
+}
 .row-body{min-width:0;flex:1}
-.row-title{font-weight:600;font-size:.95rem;margin-bottom:2px;line-height:1.35}
+.row-title{font-weight:700;font-size:.96rem;margin-bottom:3px;line-height:1.35;color:var(--ink)}
 .row-sub{font-size:.8rem;color:var(--muted);display:flex;align-items:center;gap:6px}
 
 /* ============ PROGRAMS ============ */
 .program-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-@media(min-width:720px){.program-grid{grid-template-columns:repeat(3,1fr);gap:14px}}
-.program{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;
+@media(min-width:720px){.program-grid{grid-template-columns:repeat(3,1fr);gap:16px}}
+.program{
+  background:#fff;border:1px solid var(--line);
+  border-radius:var(--radius);padding:22px;
   box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:10px;
-  transition:.18s;position:relative;overflow:hidden}
-.program::before{
-  content:'';position:absolute;right:-20px;top:-20px;width:100px;height:100px;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cg fill='none' stroke='%232FA56F' stroke-width='0.8' stroke-opacity='0.07'%3E%3Cpath d='M50 10 L60 40 L90 50 L60 60 L50 90 L40 60 L10 50 L40 40 Z'/%3E%3C/g%3E%3C/svg%3E");
-  background-size:contain;background-repeat:no-repeat;pointer-events:none;
-  transition:.2s
+  transition:.2s;position:relative;overflow:hidden;
 }
-.program:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:var(--green-200)}
-.program:hover::before{opacity:1.3;transform:scale(1.1)}
-.program-icon{width:48px;height:48px;border-radius:13px;
-  background:linear-gradient(135deg,var(--green-500),var(--green-600));
-  color:#fff;display:grid;place-items:center;margin-bottom:2px;
-  box-shadow:0 6px 14px rgba(47,165,111,.28);position:relative;z-index:1}
+.program::after{
+  content:'';position:absolute;right:-20px;top:-20px;width:90px;height:90px;
+  border:1.5px solid rgba(201,169,97,.15);
+  border-radius:50%;pointer-events:none;transition:.3s;
+}
+.program:hover{
+  transform:translateY(-4px);box-shadow:var(--shadow-lg);
+  border-color:var(--gold-500);
+}
+.program:hover::after{border-color:rgba(201,169,97,.4);transform:scale(1.1)}
+.program-icon{
+  width:50px;height:50px;border-radius:13px;
+  background:linear-gradient(135deg,var(--em-700),var(--em-800));
+  color:var(--gold-400);display:grid;place-items:center;
+  margin-bottom:2px;box-shadow:0 6px 16px rgba(14,94,58,.25);
+  position:relative;z-index:1;
+}
 .program-icon svg{width:24px;height:24px}
-.program h3{font-size:.98rem;font-weight:700;position:relative;z-index:1}
-.program p{font-size:.83rem;color:var(--ink-soft);line-height:1.5;position:relative;z-index:1}
-.cta{margin-top:auto;padding-top:6px;font-size:.82rem;font-weight:600;
-  color:var(--green-600);position:relative;z-index:1;
-  background:none;border:none;cursor:pointer;text-align:left;
-  display:flex;align-items:center;gap:6px}
-.cta:hover{color:var(--green-700)}
+.program h3{
+  font-size:1rem;font-weight:800;color:var(--em-900);
+  position:relative;z-index:1;letter-spacing:-.01em;
+}
+.program p{
+  font-size:.83rem;color:var(--ink-soft);line-height:1.55;
+  position:relative;z-index:1;
+}
+.cta{
+  margin-top:auto;padding-top:10px;
+  font-size:.82rem;font-weight:700;color:var(--em-700);
+  position:relative;z-index:1;
+  background:none;border:none;cursor:pointer;
+  text-align:left;display:flex;align-items:center;gap:6px;
+  transition:.15s;
+}
+.cta:hover{color:var(--gold-600);gap:8px}
 .cta.locked{color:var(--muted)}
-.cta svg{width:11px;height:11px}
+.cta svg{width:12px;height:12px}
 
 /* ============ MARKET TABS ============ */
 .market-tabs{
-  display:flex;gap:6px;margin-bottom:22px;padding:5px;
-  background:#fff;border:1px solid var(--line);border-radius:14px;
-  box-shadow:var(--shadow-sm)
+  display:flex;gap:4px;margin-bottom:24px;padding:5px;
+  background:#fff;border:1px solid var(--line);
+  border-radius:14px;box-shadow:var(--shadow-sm);
 }
 .market-tab{
-  flex:1;padding:11px 16px;border-radius:10px;
+  flex:1;padding:12px 18px;border-radius:10px;
   font-weight:700;font-size:.9rem;color:var(--ink-soft);
-  transition:.15s;white-space:nowrap;
-  display:flex;align-items:center;justify-content:center;gap:6px
+  transition:.2s;white-space:nowrap;
+  display:flex;align-items:center;justify-content:center;gap:8px;
 }
 .market-tab svg{width:16px;height:16px;opacity:.7}
-.market-tab:hover{background:var(--green-50);color:var(--green-700)}
+.market-tab:hover{background:var(--em-50);color:var(--em-700)}
 .market-tab.active{
-  background:linear-gradient(135deg,var(--green-500),var(--green-600));
-  color:#fff;box-shadow:0 4px 12px rgba(47,165,111,.25)
+  background:linear-gradient(135deg,var(--em-700),var(--em-800));
+  color:#fff;box-shadow:0 6px 16px rgba(14,94,58,.28);
 }
 .market-tab.active svg{opacity:1}
-
 .market-panel{display:none}
-.market-panel.active{display:block;animation:fade .25s ease}
+.market-panel.active{display:block;animation:fade .3s ease}
 
-.info-2col{display:grid;grid-template-columns:1fr;gap:12px}
+/* ============ INFO CARDS ============ */
+.info-2col{display:grid;grid-template-columns:1fr;gap:14px}
 @media(min-width:720px){.info-2col{grid-template-columns:1fr 1fr}}
 .info-card{
-  background:#fff;border:1px solid var(--line);border-radius:14px;
-  padding:18px;box-shadow:var(--shadow-sm)
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px;box-shadow:var(--shadow-sm);
 }
 .info-card h3{
-  font-size:.95rem;font-weight:700;color:var(--green-800);
-  margin-bottom:10px;display:flex;align-items:center;gap:8px
+  font-size:.95rem;font-weight:800;color:var(--em-900);
+  margin-bottom:14px;display:flex;align-items:center;gap:8px;
 }
-.info-card h3 svg{width:18px;height:18px;color:var(--green-600)}
+.info-card h3 svg{width:18px;height:18px;color:var(--gold-600)}
 .payment-list,.delivery-list{display:flex;flex-wrap:wrap;gap:8px}
 .pay-tag,.deliv-tag{
-  padding:6px 12px;border-radius:8px;font-size:.78rem;font-weight:600;
-  background:var(--green-50);color:var(--green-700);
-  border:1px solid var(--green-200);display:inline-flex;
-  align-items:center;gap:5px
+  padding:7px 14px;border-radius:8px;font-size:.78rem;font-weight:600;
+  background:linear-gradient(135deg,var(--em-50),var(--em-100));
+  color:var(--em-800);border:1px solid var(--em-200);
+  display:inline-flex;align-items:center;gap:5px;
 }
 .pay-tag svg,.deliv-tag svg{width:12px;height:12px}
 
 /* ============ PRODUCT CARDS ============ */
-.product-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-@media(min-width:720px){.product-grid{grid-template-columns:repeat(3,1fr);gap:14px}}
+.product-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+@media(min-width:720px){.product-grid{grid-template-columns:repeat(3,1fr);gap:16px}}
 @media(min-width:1100px){.product-grid{grid-template-columns:repeat(4,1fr)}}
 .product-card{
-  background:#fff;border:1px solid var(--line);border-radius:16px;
-  overflow:hidden;box-shadow:var(--shadow-sm);transition:.18s;
-  display:flex;flex-direction:column
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  overflow:hidden;box-shadow:var(--shadow-sm);transition:.2s;
+  display:flex;flex-direction:column;
 }
 .product-card:hover{
-  transform:translateY(-3px);box-shadow:var(--shadow);
-  border-color:var(--green-200)
+  transform:translateY(-4px);box-shadow:var(--shadow-lg);
+  border-color:var(--gold-500);
 }
 .product-image{
   aspect-ratio:1;display:grid;place-items:center;position:relative;
-  background:linear-gradient(135deg,var(--green-50),var(--green-100))
+  background:linear-gradient(135deg,var(--em-50),var(--em-100));
 }
-.product-image svg{width:40%;height:40%;color:var(--green-600);opacity:.8}
+.product-image svg{width:40%;height:40%;color:var(--em-700);opacity:.7}
 .product-badge{
-  position:absolute;top:8px;left:8px;
-  padding:3px 9px;border-radius:6px;font-size:.65rem;font-weight:700;
-  background:var(--green-500);color:#fff;
-  text-transform:uppercase;letter-spacing:.06em
+  position:absolute;top:10px;left:10px;
+  padding:4px 10px;border-radius:6px;font-size:.62rem;font-weight:800;
+  background:var(--gold-500);color:var(--em-900);
+  text-transform:uppercase;letter-spacing:.08em;
 }
 .product-body{padding:14px;display:flex;flex-direction:column;gap:6px;flex:1}
 .product-cat{
-  font-size:.68rem;color:var(--green-600);font-weight:700;
-  text-transform:uppercase;letter-spacing:.08em
+  font-size:.68rem;color:var(--gold-600);font-weight:700;
+  text-transform:uppercase;letter-spacing:.08em;
 }
 .product-name{
-  font-weight:700;font-size:.94rem;color:var(--ink);
-  line-height:1.35;margin-bottom:2px
+  font-weight:800;font-size:.95rem;color:var(--em-900);
+  line-height:1.35;margin-bottom:2px;
 }
 .product-meta{
   display:flex;align-items:center;justify-content:space-between;
-  gap:6px;margin-top:auto;padding-top:6px
+  gap:6px;margin-top:auto;padding-top:6px;
 }
 .product-price{
-  font-size:.9rem;font-weight:800;color:var(--green-700);letter-spacing:-.01em
+  font-size:.95rem;font-weight:900;color:var(--em-700);letter-spacing:-.01em;
 }
 .product-rating{
   font-size:.72rem;color:var(--muted);display:flex;align-items:center;gap:3px;
-  font-weight:600
+  font-weight:600;
 }
-.product-rating svg{width:11px;height:11px;fill:var(--green-500);color:var(--green-500)}
+.product-rating svg{width:11px;height:11px;fill:var(--gold-500);color:var(--gold-500)}
 .product-btn{
-  margin-top:6px;padding:9px;border-radius:8px;
-  background:linear-gradient(135deg,var(--green-500),var(--green-600));
-  color:#fff;font-weight:700;font-size:.78rem;
-  letter-spacing:.02em;transition:.15s;
-  display:flex;align-items:center;justify-content:center;gap:5px
+  margin-top:6px;padding:10px;border-radius:8px;
+  background:linear-gradient(135deg,var(--em-700),var(--em-800));
+  color:#fff;font-weight:700;font-size:.8rem;
+  letter-spacing:.01em;transition:.15s;
+  display:flex;align-items:center;justify-content:center;gap:6px;
 }
-.product-btn:hover{background:linear-gradient(135deg,var(--green-600),var(--green-700))}
+.product-btn:hover{
+  background:linear-gradient(135deg,var(--gold-500),var(--gold-600));
+  color:var(--em-900);
+}
 .product-btn svg{width:12px;height:12px}
 
-.cat-row{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;
-  scrollbar-width:none;-webkit-overflow-scrolling:touch;margin-bottom:18px}
+.cat-row{
+  display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;
+  scrollbar-width:none;-webkit-overflow-scrolling:touch;margin-bottom:18px;
+}
 .cat-row::-webkit-scrollbar{display:none}
 .cat-chip{
-  padding:9px 18px;border-radius:999px;font-size:.82rem;font-weight:600;
+  padding:10px 20px;border-radius:999px;font-size:.82rem;font-weight:700;
   white-space:nowrap;flex:none;
   background:#fff;color:var(--ink-soft);
-  border:1px solid var(--line);transition:.15s;cursor:pointer
+  border:1px solid var(--line);transition:.18s;cursor:pointer;
 }
-.cat-chip:hover{border-color:var(--green-300);color:var(--green-700)}
+.cat-chip:hover{border-color:var(--em-300);color:var(--em-700)}
 .cat-chip.active{
-  background:linear-gradient(135deg,var(--green-500),var(--green-600));
-  color:#fff;border-color:var(--green-500)
+  background:linear-gradient(135deg,var(--em-700),var(--em-800));
+  color:#fff;border-color:var(--em-700);
+  box-shadow:0 4px 14px rgba(14,94,58,.25);
 }
 
-.partner-grid{display:grid;grid-template-columns:1fr;gap:10px}
+.partner-grid{display:grid;grid-template-columns:1fr;gap:12px}
 @media(min-width:720px){.partner-grid{grid-template-columns:repeat(2,1fr)}}
 .partner{
-  display:flex;align-items:center;gap:14px;padding:14px;
-  background:#fff;border:1px solid var(--line);border-radius:14px;
-  box-shadow:var(--shadow-sm);transition:.15s
+  display:flex;align-items:center;gap:14px;padding:16px;
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow-sm);transition:.18s;
 }
 .partner:hover{
-  border-color:var(--green-200);box-shadow:var(--shadow);
-  transform:translateY(-2px)
+  border-color:var(--gold-500);box-shadow:var(--shadow);
+  transform:translateY(-2px);
 }
 .partner-logo{
-  width:48px;height:48px;border-radius:12px;flex:none;
-  background:linear-gradient(135deg,var(--green-500),var(--green-600));
-  color:#fff;display:grid;place-items:center;
-  font-weight:800;font-size:1.05rem
+  width:50px;height:50px;border-radius:12px;flex:none;
+  background:linear-gradient(135deg,var(--em-700),var(--em-800));
+  color:var(--gold-400);display:grid;place-items:center;
+  font-weight:800;font-size:1.05rem;
+  box-shadow:0 4px 12px rgba(14,94,58,.2);
 }
 .partner-body{min-width:0;flex:1}
 .partner-name{
-  font-weight:700;font-size:.95rem;color:var(--ink);
-  margin-bottom:3px;line-height:1.3
+  font-weight:800;font-size:.96rem;color:var(--em-900);
+  margin-bottom:3px;line-height:1.3;
 }
-.partner-meta{font-size:.75rem;color:var(--muted);display:flex;align-items:center;gap:6px}
-.partner-meta svg{width:11px;height:11px;fill:var(--green-500)}
+.partner-meta{font-size:.76rem;color:var(--muted);display:flex;align-items:center;gap:6px}
+.partner-meta svg{width:11px;height:11px;fill:var(--gold-500)}
 
 /* ============ BANNER ============ */
 .banner{
-  display:flex;align-items:center;gap:16px;padding:22px;
+  display:flex;align-items:center;gap:18px;padding:24px;
   border-radius:var(--radius-lg);
-  background:linear-gradient(135deg,var(--green-500),var(--green-600));
-  color:#fff;box-shadow:0 14px 32px rgba(47,165,111,.3);
-  position:relative;overflow:hidden
+  background:linear-gradient(135deg,var(--em-800),var(--em-900));
+  color:#fff;box-shadow:0 16px 40px rgba(14,94,58,.3);
+  position:relative;overflow:hidden;
+  border:1px solid rgba(201,169,97,.2);
 }
 .banner::before{
-  content:'';position:absolute;top:0;right:0;width:180px;height:180px;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cg fill='none' stroke='%23FFFFFF' stroke-width='1' stroke-opacity='0.15'%3E%3Cpath d='M90 15 L108 72 L165 90 L108 108 L90 165 L72 108 L15 90 L72 72 Z'/%3E%3Ccircle cx='90' cy='90' r='60'/%3E%3C/g%3E%3C/svg%3E");
+  content:'';position:absolute;top:0;right:0;width:200px;height:200px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cg fill='none' stroke='%23c9a961' stroke-width='1' stroke-opacity='0.2'%3E%3Cpath d='M100 20 L120 80 L180 100 L120 120 L100 180 L80 120 L20 100 L80 80 Z'/%3E%3Ccircle cx='100' cy='100' r='70'/%3E%3C/g%3E%3C/svg%3E");
   background-size:contain;background-repeat:no-repeat;
-  background-position:right center;pointer-events:none
+  background-position:right center;pointer-events:none;opacity:.6;
 }
 .banner-text{position:relative;z-index:1}
-.banner-text h3{font-size:1rem;font-weight:700;margin-bottom:4px}
-.banner-text p{font-size:.85rem;opacity:.93;line-height:1.4}
-.banner-btn{
-  margin-left:auto;background:#fff;color:var(--green-700);font-weight:700;
-  padding:11px 20px;border-radius:999px;font-size:.85rem;white-space:nowrap;
-  position:relative;z-index:1;
-  box-shadow:0 4px 10px rgba(0,0,0,.1);transition:.15s
+.banner-text h3{
+  font-size:1.05rem;font-weight:800;margin-bottom:5px;
+  color:#fff;letter-spacing:-.01em;
 }
-.banner-btn:hover{transform:translateY(-1px);box-shadow:0 6px 14px rgba(0,0,0,.15)}
-@media(max-width:600px){.banner{flex-direction:column;align-items:flex-start}
-  .banner-btn{margin-left:0}}
+.banner-text p{font-size:.86rem;opacity:.9;line-height:1.5}
+.banner-btn{
+  margin-left:auto;
+  background:linear-gradient(135deg,var(--gold-500),var(--gold-600));
+  color:var(--em-900);font-weight:800;
+  padding:12px 22px;border-radius:999px;font-size:.85rem;white-space:nowrap;
+  position:relative;z-index:1;
+  box-shadow:0 6px 18px rgba(201,169,97,.35);
+  transition:.15s;
+}
+.banner-btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(201,169,97,.45)}
+@media(max-width:600px){
+  .banner{flex-direction:column;align-items:flex-start;padding:20px}
+  .banner-btn{margin-left:0}
+}
 
 /* ============ PLACEHOLDER ============ */
 .placeholder{
-  text-align:center;padding:56px 24px;background:#fff;
-  border:1px dashed var(--green-200);border-radius:16px;color:var(--ink-soft)
+  text-align:center;padding:60px 24px;background:#fff;
+  border:1px dashed var(--em-200);border-radius:var(--radius);color:var(--ink-soft);
 }
-.placeholder h3{font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:6px}
+.placeholder h3{font-size:1rem;font-weight:800;color:var(--em-900);margin-bottom:6px}
 .placeholder p{font-size:.88rem}
 
 /* ============ LOGIN PROMPT ============ */
 .login-prompt{
-  display:flex;align-items:center;gap:12px;padding:14px 18px;
-  background:linear-gradient(135deg,#FFF8E8,#FFF4D6);
-  border:1px solid #F4D98C;border-radius:14px;margin-bottom:20px;
-  font-size:.88rem;color:#7A5B12
+  display:flex;align-items:center;gap:14px;padding:16px 20px;
+  background:linear-gradient(135deg,var(--gold-100),#fff8e6);
+  border:1px solid var(--gold-400);
+  border-radius:var(--radius);margin-bottom:22px;
+  font-size:.9rem;color:#6b4f10;
+  box-shadow:0 4px 12px rgba(201,169,97,.15);
 }
-.login-prompt svg{width:18px;height:18px;flex:none;color:#B8860B}
-.login-prompt p{flex:1;line-height:1.4}
-.login-prompt p strong{color:var(--green-800);font-weight:700}
+.login-prompt svg{width:20px;height:20px;flex:none;color:var(--gold-700)}
+.login-prompt p{flex:1;line-height:1.45}
+.login-prompt p strong{color:var(--em-900);font-weight:800}
 .login-prompt button{
-  padding:8px 16px;background:#B8860B;color:#fff;border-radius:999px;
-  font-weight:700;font-size:.8rem;white-space:nowrap;transition:.15s
+  padding:10px 20px;
+  background:linear-gradient(135deg,var(--em-700),var(--em-800));
+  color:#fff;border-radius:999px;
+  font-weight:800;font-size:.82rem;white-space:nowrap;
+  transition:.15s;
+  box-shadow:0 4px 12px rgba(14,94,58,.25);
 }
-.login-prompt button:hover{background:#9A7009}
+.login-prompt button:hover{
+  background:linear-gradient(135deg,var(--gold-500),var(--gold-600));
+  color:var(--em-900);
+  box-shadow:0 6px 16px rgba(201,169,97,.35);
+}
 .login-prompt.logged-in{
-  background:linear-gradient(135deg,var(--green-50),var(--green-100));
-  border-color:var(--green-300);color:var(--green-800)
+  background:linear-gradient(135deg,var(--em-50),var(--em-100));
+  border-color:var(--em-300);color:var(--em-800);
 }
-.login-prompt.logged-in svg{color:var(--green-700)}
-.login-prompt.logged-in button{background:#C64747}
-.login-prompt.logged-in button:hover{background:#A93A3A}
+.login-prompt.logged-in svg{color:var(--em-700)}
+.login-prompt.logged-in button{
+  background:#c62828;
+  box-shadow:0 4px 12px rgba(198,40,40,.25);
+}
+.login-prompt.logged-in button:hover{background:#a82020;color:#fff}
 
 /* ============ BOTTOM NAV ============ */
 .bottom-nav{
   position:fixed;left:0;right:0;bottom:0;z-index:40;
-  background:rgba(255,255,255,.96);backdrop-filter:blur(14px);
+  background:rgba(255,255,255,.96);backdrop-filter:blur(16px);
   border-top:1px solid var(--line);display:none;justify-content:space-around;
   padding:6px 8px calc(6px + env(safe-area-inset-bottom));
-  box-shadow:0 -4px 16px rgba(11,61,40,.06)
+  box-shadow:0 -4px 20px rgba(14,94,58,.08);
 }
 @media(max-width:939px){
   .bottom-nav{display:flex}
   body{padding-bottom:88px}
 }
 .bn-item{
-  display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px 6px;
-  border-radius:12px;font-size:.66rem;font-weight:600;color:var(--muted);
-  flex:1;transition:.12s;max-width:88px
+  display:flex;flex-direction:column;align-items:center;gap:4px;
+  padding:8px 6px;border-radius:12px;
+  font-size:.66rem;font-weight:600;color:var(--muted);
+  flex:1;transition:.15s;max-width:88px;
 }
 .bn-item svg{width:22px;height:22px}
-.bn-item.active{color:var(--green-600)}
+.bn-item.active{color:var(--em-700);font-weight:800}
+.bn-item.active svg{filter:drop-shadow(0 2px 6px rgba(14,94,58,.3))}
 
 /* ============ MODAL ============ */
 .modal-backdrop{
-  position:fixed;inset:0;background:rgba(11,61,40,.5);
-  backdrop-filter:blur(6px);z-index:200;
-  display:none;align-items:center;justify-content:center;
-  padding:16px;overflow-y:auto
+  position:fixed;inset:0;
+  background:rgba(5,46,31,.55);backdrop-filter:blur(8px);
+  z-index:200;display:none;align-items:center;justify-content:center;
+  padding:16px;overflow-y:auto;
 }
-.modal-backdrop.open{display:flex;animation:fadeIn .2s ease}
+.modal-backdrop.open{display:flex;animation:fadeIn .22s ease}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 .modal{
-  background:#fff;border-radius:20px;width:100%;max-width:480px;
-  box-shadow:0 30px 60px rgba(11,61,40,.3);
+  background:#fff;border-radius:var(--radius-lg);width:100%;max-width:500px;
+  box-shadow:0 40px 80px rgba(5,46,31,.4);
   max-height:calc(100vh - 32px);overflow:hidden;
   display:flex;flex-direction:column;
-  animation:slideUp .25s ease
+  animation:slideUp .3s ease;
+  border:1px solid rgba(201,169,97,.3);
 }
-@keyframes slideUp{from{opacity:0;transform:translateY(20px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes slideUp{from{opacity:0;transform:translateY(24px) scale(.96)}to{opacity:1;transform:none}}
 .modal-head{
-  display:flex;align-items:flex-start;gap:12px;padding:22px 22px 16px;
-  border-bottom:1px solid var(--line)
+  display:flex;align-items:flex-start;gap:12px;
+  padding:24px 24px 18px;
+  border-bottom:1px solid var(--line);
+  background:linear-gradient(135deg,var(--em-50),#fff);
 }
-.modal-head h2{font-size:1.15rem;letter-spacing:-.02em;margin-bottom:3px;color:var(--green-800);font-weight:800}
-.modal-head p{font-size:.82rem;color:var(--muted)}
+.modal-head h2{
+  font-size:1.2rem;letter-spacing:-.02em;margin-bottom:3px;
+  color:var(--em-900);font-weight:800;
+}
+.modal-head p{font-size:.83rem;color:var(--muted)}
 .modal-close{
-  margin-left:auto;width:34px;height:34px;border-radius:10px;
+  margin-left:auto;width:36px;height:36px;border-radius:10px;
   display:grid;place-items:center;color:var(--ink-soft);
-  transition:.12s;flex:none
+  transition:.12s;flex:none;
 }
-.modal-close:hover{background:var(--green-50);color:var(--green-700)}
+.modal-close:hover{background:var(--em-50);color:var(--em-700)}
 .modal-close svg{width:18px;height:18px}
-
 .modal-tabs{
-  display:flex;gap:6px;padding:14px 22px;overflow-x:auto;
-  border-bottom:1px solid var(--line);scrollbar-width:none
+  display:flex;gap:6px;padding:16px 24px;overflow-x:auto;
+  border-bottom:1px solid var(--line);scrollbar-width:none;
+  background:#fff;
 }
 .modal-tabs::-webkit-scrollbar{display:none}
 .modal-tab{
-  display:inline-flex;align-items:center;gap:6px;padding:8px 14px;
-  border-radius:999px;font-size:.83rem;font-weight:600;
-  color:var(--ink-soft);background:var(--green-50);
-  transition:.12s;white-space:nowrap;flex:none
+  display:inline-flex;align-items:center;gap:6px;
+  padding:9px 16px;border-radius:999px;
+  font-size:.83rem;font-weight:700;
+  color:var(--ink-soft);background:var(--em-50);
+  transition:.15s;white-space:nowrap;flex:none;
 }
-.modal-tab:hover{background:var(--green-100)}
-.modal-tab.active{background:var(--green-500);color:#fff;
-  box-shadow:0 4px 10px rgba(47,165,111,.25)}
+.modal-tab:hover{background:var(--em-100)}
+.modal-tab.active{
+  background:linear-gradient(135deg,var(--em-700),var(--em-800));
+  color:#fff;
+  box-shadow:0 4px 12px rgba(14,94,58,.28);
+}
 .modal-tab svg{width:14px;height:14px}
-
-.modal-body{padding:16px 22px 22px;overflow-y:auto;flex:1}
+.modal-body{padding:18px 24px 24px;overflow-y:auto;flex:1}
 .modal-note{
-  display:flex;gap:10px;padding:11px 13px;background:var(--green-50);
-  border-radius:12px;font-size:.82rem;color:var(--green-800);
-  margin-bottom:14px;line-height:1.45
+  display:flex;gap:10px;padding:12px 14px;
+  background:linear-gradient(135deg,var(--gold-100),#fffbe8);
+  border-radius:12px;font-size:.83rem;color:#6b4f10;
+  margin-bottom:16px;line-height:1.5;
+  border:1px solid var(--gold-300);
 }
-.modal-note svg{width:16px;height:16px;flex:none;color:var(--green-600);margin-top:2px}
-
-.role-list{display:flex;flex-direction:column;gap:8px}
+.modal-note svg{width:16px;height:16px;flex:none;color:var(--gold-700);margin-top:2px}
+.role-list{display:flex;flex-direction:column;gap:10px}
 .role-card{
-  display:flex;align-items:center;gap:12px;padding:13px 14px;
-  background:#fff;border:1px solid var(--line);border-radius:14px;
-  text-align:left;transition:.15s;width:100%
+  display:flex;align-items:center;gap:14px;padding:14px 16px;
+  background:#fff;border:1px solid var(--line);
+  border-radius:14px;text-align:left;transition:.18s;width:100%;
 }
 .role-card:hover{
-  border-color:var(--green-300);background:#FCFEFD;
-  transform:translateX(2px);box-shadow:var(--shadow-sm)
+  border-color:var(--gold-500);
+  background:linear-gradient(135deg,#fff,var(--gold-100));
+  transform:translateX(3px);
+  box-shadow:0 6px 16px rgba(201,169,97,.18);
 }
 .role-card-icon{
-  width:40px;height:40px;flex:none;border-radius:11px;
-  background:linear-gradient(135deg,var(--green-50),var(--green-100));
-  color:var(--green-700);display:grid;place-items:center;
-  border:1px solid var(--green-200)
+  width:42px;height:42px;flex:none;border-radius:11px;
+  background:linear-gradient(135deg,var(--em-50),var(--em-100));
+  color:var(--em-700);display:grid;place-items:center;
+  border:1px solid var(--em-200);
 }
 .role-card-icon svg{width:20px;height:20px}
 .role-card-text{flex:1;min-width:0}
 .role-card-name{
-  font-weight:700;font-size:.92rem;color:var(--ink);margin-bottom:2px
+  font-weight:800;font-size:.94rem;color:var(--em-900);margin-bottom:2px;
 }
-.role-card-desc{font-size:.75rem;color:var(--muted);line-height:1.3}
+.role-card-desc{font-size:.76rem;color:var(--muted);line-height:1.35}
 .role-card-arrow{width:16px;height:16px;color:var(--muted);flex:none;transition:.15s}
-.role-card:hover .role-card-arrow{color:var(--green-600);transform:translateX(2px)}
+.role-card:hover .role-card-arrow{color:var(--gold-600);transform:translateX(2px)}
 
 /* ============ TOAST ============ */
 .toast{
-  position:fixed;left:50%;bottom:100px;transform:translateX(-50%) translateY(20px);
-  background:var(--green-800);color:#fff;padding:12px 20px;border-radius:999px;
-  font-size:.88rem;font-weight:500;box-shadow:var(--shadow-lg);
-  opacity:0;pointer-events:none;transition:.25s;z-index:300;
-  white-space:nowrap;max-width:calc(100% - 40px);overflow:hidden;
-  text-overflow:ellipsis
+  position:fixed;left:50%;bottom:100px;
+  transform:translateX(-50%) translateY(20px);
+  background:linear-gradient(135deg,var(--em-800),var(--em-900));
+  color:var(--gold-300);
+  padding:14px 22px;border-radius:12px;
+  font-size:.9rem;font-weight:600;
+  box-shadow:0 16px 40px rgba(5,46,31,.4);
+  opacity:0;pointer-events:none;transition:.3s;
+  z-index:300;white-space:nowrap;max-width:calc(100% - 40px);
+  overflow:hidden;text-overflow:ellipsis;
+  border:1px solid rgba(201,169,97,.3);
 }
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 </style>
@@ -701,14 +912,14 @@ main{max-width:var(--maxw);margin:0 auto;padding:32px 24px 56px}
         <img src="logo.png" alt="MaNUSya"
              onerror="this.style.display='none';this.parentElement.classList.add('fallback')" />
         <svg class="brand-fallback" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <rect width="48" height="48" rx="12" fill="#2FA56F"/>
-          <g fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect width="48" height="48" rx="12" fill="#0e5e3a"/>
+          <g fill="none" stroke="#c9a961" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M9 39h30"/>
             <path d="M13 39v-11"/><path d="M11 28h4"/><circle cx="13" cy="25" r="1.4"/>
             <path d="M35 39v-11"/><path d="M33 28h4"/><circle cx="35" cy="25" r="1.4"/>
             <path d="M18 39v-9a6 6 0 0 1 12 0v9"/>
             <path d="M21.5 39v-3a2.5 2.5 0 0 1 5 0v3"/>
-            <path d="M24 24v-3"/><circle cx="24" cy="20" r="1" fill="#fff"/>
+            <path d="M24 24v-3"/><circle cx="24" cy="20" r="1" fill="#c9a961"/>
           </g>
         </svg>
       </div>
@@ -717,6 +928,8 @@ main{max-width:var(--maxw);margin:0 auto;padding:32px 24px 56px}
         <span class="brand-tag">Masjid NU Sleman Berdaya</span>
       </div>
     </a>
+
+    <div class="nav-sep"></div>
 
     <nav class="nav-desktop">
       <button class="nav-link active" data-nav="beranda">
@@ -741,6 +954,8 @@ main{max-width:var(--maxw);margin:0 auto;padding:32px 24px 56px}
       </button>
     </nav>
 
+    <div class="nav-sep"></div>
+
     <div class="header-actions">
       <div class="user-chip" id="userChip" style="display:none">
         <div class="user-avatar" id="userAvatar">-</div>
@@ -763,47 +978,57 @@ main{max-width:var(--maxw);margin:0 auto;padding:32px 24px 56px}
   <section class="page active" data-page="beranda">
 
     <div class="hero">
-      <div class="hero-badge">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M2.5 21h19"/>
-          <path d="M4 21v-9"/><path d="M3 12h2"/><circle cx="4" cy="10.5" r="0.9"/>
-          <path d="M20 21v-9"/><path d="M19 12h2"/><circle cx="20" cy="10.5" r="0.9"/>
-          <path d="M7 21v-7.5a5 5 0 0 1 10 0V21"/>
-          <path d="M10.5 21v-3a1.5 1.5 0 0 1 3 0v3"/>
-          <path d="M12 8V6.5"/><circle cx="12" cy="5.5" r="0.7" fill="currentColor"/>
-        </svg>
-      </div>
       <div class="hero-text">
-        <h1>Assalamu'alaikum, Jamaah NU Sleman</h1>
-        <p>Selamat datang di <strong>MaNUSya</strong> — satu platform digital untuk ibadah, pendidikan, ekonomi, dan sosial jamaah Masjid NU Sleman.</p>
+        <h1>Assalamu'alaikum,<br><span>Jamaah NU Sleman</span></h1>
+        <p>Mari bersama memakmurkan masjid, menebar manfaat untuk umat.</p>
+        <button class="hero-cta" data-nav="ibadah">
+          Selengkapnya
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
       </div>
     </div>
 
-    <!-- Prayer Live: 1 col mobile, 2 col desktop (via container query) -->
+    <!-- Prayer Live -->
     <div class="prayer-wrap" style="margin-bottom:26px">
       <div class="prayer-live">
         <div class="prayer-left">
-          <div class="prayer-head">
-            <div class="prayer-head-info">
-              <div class="prayer-label">Jadwal Salat</div>
-              <div class="prayer-location">Sleman <small>· Yogyakarta</small></div>
-            </div>
-            <div class="live-clock" id="liveClock">--:--:--</div>
-          </div>
-          <div class="date-row">
+          <div class="prayer-date-row">
             <div class="date-item">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
               <span id="gregDate">-</span>
             </div>
             <div class="date-item">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
-              <span><strong id="hijriDate">-</strong></span>
+              <strong id="hijriDate">-</strong>
             </div>
           </div>
-          <div class="prayer-grid-live" id="prayerGridLive"></div>
-          <div class="countdown-bar">
-            <span class="countdown-label">Menuju <strong id="nextPrayerName">-</strong></span>
-            <span class="countdown-value" id="countdown">--:--:--</span>
+
+          <div class="prayer-main-row">
+            <div class="prayer-clock-col">
+              <div class="prayer-label">Waktu Sekarang</div>
+              <div class="live-clock" id="liveClock">--:--:--</div>
+            </div>
+
+            <div class="prayer-times-col">
+              <div class="prayer-location">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21v-7"/><path d="M19 21v-7"/><path d="M5 14a7 7 0 0 1 14 0"/><path d="M10 21v-3a2 2 0 0 1 4 0v3"/><path d="M12 7V5"/></svg>
+                Sleman <small>· Yogyakarta</small>
+              </div>
+              <div class="prayer-grid-live" id="prayerGridLive"></div>
+            </div>
+
+            <div class="prayer-next-col">
+              <div class="prayer-next-label">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                Menuju Salat Berikutnya
+              </div>
+              <div class="prayer-next-name" id="nextPrayerName">-</div>
+              <div class="countdown-bar">
+                <span class="countdown-label">Menuju <strong>-</strong></span>
+                <span class="countdown-value" id="countdown">--:--:--</span>
+                <span class="prayer-next-suffix">lagi</span>
+              </div>
+            </div>
           </div>
         </div>
         <div class="prayer-right">
@@ -915,14 +1140,14 @@ main{max-width:var(--maxw);margin:0 auto;padding:32px 24px 56px}
           <div class="section-head"><div class="section-title">Promo Market</div></div>
           <div class="list">
             <div class="row">
-              <div class="row-date" style="background:linear-gradient(135deg,var(--green-500),var(--green-600));color:#fff;font-size:.68rem;font-weight:800">Promo</div>
+              <div class="row-date" style="background:linear-gradient(135deg,var(--gold-500),var(--gold-600));color:var(--em-900);font-size:.66rem;font-weight:900">Promo</div>
               <div class="row-body">
                 <div class="row-title">Beras Premium 5kg</div>
                 <div class="row-sub">Rp 68.000 · BAZMalah</div>
               </div>
             </div>
             <div class="row">
-              <div class="row-date" style="background:linear-gradient(135deg,var(--green-500),var(--green-600));color:#fff;font-size:.68rem;font-weight:800">New</div>
+              <div class="row-date" style="background:linear-gradient(135deg,var(--gold-500),var(--gold-600));color:var(--em-900);font-size:.66rem;font-weight:900">New</div>
               <div class="row-body">
                 <div class="row-title">Sarung NU Premium</div>
                 <div class="row-sub">Rp 125.000 · NUShop</div>
@@ -937,18 +1162,13 @@ main{max-width:var(--maxw);margin:0 auto;padding:32px 24px 56px}
   <!-- ============ IBADAH ============ -->
   <section class="page" data-page="ibadah">
     <div class="hero">
-      <div class="hero-badge">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M2.5 21h19"/>
-          <path d="M4 21v-9"/><path d="M3 12h2"/><circle cx="4" cy="10.5" r="0.9"/>
-          <path d="M20 21v-9"/><path d="M19 12h2"/><circle cx="20" cy="10.5" r="0.9"/>
-          <path d="M7 21v-7.5a5 5 0 0 1 10 0V21"/>
-          <path d="M10.5 21v-3a1.5 1.5 0 0 1 3 0v3"/>
-        </svg>
-      </div>
       <div class="hero-text">
         <h1>Ibadah &amp; Masjid</h1>
         <p>Jadwal salat realtime, kajian, profil masjid, daftar masjid NU Sleman, peta, media sosial, dan NU News.</p>
+        <button class="hero-cta" data-need="masjid:admin_masjid" data-demo="Kelola Konten Masjid">
+          Kelola Konten
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
       </div>
     </div>
 
@@ -959,27 +1179,40 @@ main{max-width:var(--maxw);margin:0 auto;padding:32px 24px 56px}
         <div class="prayer-wrap" style="margin-bottom:22px">
           <div class="prayer-live">
             <div class="prayer-left">
-              <div class="prayer-head">
-                <div class="prayer-head-info">
-                  <div class="prayer-label">Jadwal Salat Hari Ini</div>
-                  <div class="prayer-location">Sleman <small>· Yogyakarta</small></div>
-                </div>
-                <div class="live-clock" id="liveClock2">--:--:--</div>
-              </div>
-              <div class="date-row">
+              <div class="prayer-date-row">
                 <div class="date-item">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
                   <span id="gregDate2">-</span>
                 </div>
                 <div class="date-item">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
-                  <span><strong id="hijriDate2">-</strong></span>
+                  <strong id="hijriDate2">-</strong>
                 </div>
               </div>
-              <div class="prayer-grid-live" id="prayerGridLive2"></div>
-              <div class="countdown-bar">
-                <span class="countdown-label">Menuju <strong id="nextPrayerName2">-</strong></span>
-                <span class="countdown-value" id="countdown2">--:--:--</span>
+              <div class="prayer-main-row">
+                <div class="prayer-clock-col">
+                  <div class="prayer-label">Waktu Sekarang</div>
+                  <div class="live-clock" id="liveClock2">--:--:--</div>
+                </div>
+                <div class="prayer-times-col">
+                  <div class="prayer-location">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21v-7"/><path d="M19 21v-7"/><path d="M5 14a7 7 0 0 1 14 0"/><path d="M10 21v-3a2 2 0 0 1 4 0v3"/><path d="M12 7V5"/></svg>
+                    Sleman <small>· Yogyakarta</small>
+                  </div>
+                  <div class="prayer-grid-live" id="prayerGridLive2"></div>
+                </div>
+                <div class="prayer-next-col">
+                  <div class="prayer-next-label">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                    Menuju Salat Berikutnya
+                  </div>
+                  <div class="prayer-next-name" id="nextPrayerName2">-</div>
+                  <div class="countdown-bar">
+                    <span class="countdown-label">Menuju <strong>-</strong></span>
+                    <span class="countdown-value" id="countdown2">--:--:--</span>
+                    <span class="prayer-next-suffix">lagi</span>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="prayer-right">
@@ -1023,7 +1256,7 @@ main{max-width:var(--maxw);margin:0 auto;padding:32px 24px 56px}
             <button class="section-link" data-need="masjid:admin_masjid" data-demo="Kelola Profil">Kelola</button>
           </div>
           <div class="row">
-            <div class="row-date" style="background:linear-gradient(135deg,var(--green-500),var(--green-600));color:#fff">
+            <div class="row-date" style="background:linear-gradient(135deg,var(--gold-500),var(--gold-600));color:var(--em-900)">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><path d="M3 21h18"/><path d="M5 21v-7"/><path d="M19 21v-7"/><path d="M5 14a7 7 0 0 1 14 0"/><path d="M10 21v-3a2 2 0 0 1 4 0v3"/><path d="M12 7V5"/></svg>
             </div>
             <div class="row-body">
@@ -1033,7 +1266,7 @@ main{max-width:var(--maxw);margin:0 auto;padding:32px 24px 56px}
           </div>
           <div class="list" style="margin-top:10px">
             <div class="row">
-              <div class="row-date" style="background:var(--green-50);color:var(--green-700)">
+              <div class="row-date" style="background:var(--em-50);color:var(--em-700)">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:24px;height:24px"><circle cx="9" cy="8" r="3.5"/><path d="M2 21v-1c0-3.5 3-6 7-6s7 2.5 7 6v1"/><circle cx="17" cy="8" r="3"/><path d="M15 15c2.5.5 4 2.5 4 5v1"/></svg>
               </div>
               <div class="row-body">
@@ -1052,7 +1285,7 @@ main{max-width:var(--maxw);margin:0 auto;padding:32px 24px 56px}
           </div>
           <div class="list">
             <div class="row">
-              <div class="row-date" style="background:var(--green-50);color:var(--green-700)">
+              <div class="row-date" style="background:var(--em-50);color:var(--em-700)">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:26px;height:26px"><path d="M3 21h18"/><path d="M5 21v-7"/><path d="M19 21v-7"/><path d="M5 14a7 7 0 0 1 14 0"/><path d="M10 21v-3a2 2 0 0 1 4 0v3"/><path d="M12 7V5"/></svg>
               </div>
               <div class="row-body">
@@ -1061,7 +1294,7 @@ main{max-width:var(--maxw);margin:0 auto;padding:32px 24px 56px}
               </div>
             </div>
             <div class="row">
-              <div class="row-date" style="background:var(--green-50);color:var(--green-700)">
+              <div class="row-date" style="background:var(--em-50);color:var(--em-700)">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:26px;height:26px"><path d="M3 21h18"/><path d="M5 21v-7"/><path d="M19 21v-7"/><path d="M5 14a7 7 0 0 1 14 0"/><path d="M10 21v-3a2 2 0 0 1 4 0v3"/><path d="M12 7V5"/></svg>
               </div>
               <div class="row-body">
@@ -1070,7 +1303,7 @@ main{max-width:var(--maxw);margin:0 auto;padding:32px 24px 56px}
               </div>
             </div>
             <div class="row">
-              <div class="row-date" style="background:var(--green-50);color:var(--green-700)">
+              <div class="row-date" style="background:var(--em-50);color:var(--em-700)">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:26px;height:26px"><path d="M3 21h18"/><path d="M5 21v-7"/><path d="M19 21v-7"/><path d="M5 14a7 7 0 0 1 14 0"/><path d="M10 21v-3a2 2 0 0 1 4 0v3"/><path d="M12 7V5"/></svg>
               </div>
               <div class="row-body">
@@ -1115,21 +1348,21 @@ main{max-width:var(--maxw);margin:0 auto;padding:32px 24px 56px}
           <div class="section-head"><div class="section-title">Media Sosial</div></div>
           <div class="list">
             <div class="row">
-              <div class="row-date" style="background:var(--green-50);color:var(--green-700);font-size:.78rem;font-weight:800">IG</div>
+              <div class="row-date" style="background:var(--gold-100);color:var(--gold-700);font-size:.78rem;font-weight:800">IG</div>
               <div class="row-body">
                 <div class="row-title">@masjidnu.sleman</div>
                 <div class="row-sub">Instagram resmi</div>
               </div>
             </div>
             <div class="row">
-              <div class="row-date" style="background:var(--green-50);color:var(--green-700);font-size:.72rem;font-weight:800">YT</div>
+              <div class="row-date" style="background:var(--gold-100);color:var(--gold-700);font-size:.72rem;font-weight:800">YT</div>
               <div class="row-body">
                 <div class="row-title">Masjid NU Sleman</div>
                 <div class="row-sub">YouTube · Kajian</div>
               </div>
             </div>
             <div class="row">
-              <div class="row-date" style="background:var(--green-50);color:var(--green-700);font-size:.72rem;font-weight:800">FB</div>
+              <div class="row-date" style="background:var(--gold-100);color:var(--gold-700);font-size:.72rem;font-weight:800">FB</div>
               <div class="row-body">
                 <div class="row-title">Masjid NU Sleman</div>
                 <div class="row-sub">Facebook · Pengumuman</div>
@@ -1144,16 +1377,13 @@ main{max-width:var(--maxw);margin:0 auto;padding:32px 24px 56px}
   <!-- ============ PENDIDIKAN ============ -->
   <section class="page" data-page="pendidikan">
     <div class="hero">
-      <div class="hero-badge">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M22 10L12 5 2 10l10 5 10-5z"/>
-          <path d="M6 12v5c0 1 2.7 3 6 3s6-2 6-3v-5"/>
-          <path d="M22 10v6"/>
-        </svg>
-      </div>
       <div class="hero-text">
         <h1>Pendidikan</h1>
         <p>TPQ, Lembaga Ma'arif NU, dan direktori pesantren NU Sleman.</p>
+        <button class="hero-cta" data-need="tpq:manajemen_tpq,mualim,orangtua" data-demo="Lihat Jadwal TPQ">
+          Lihat Jadwal
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
       </div>
     </div>
 
@@ -1205,21 +1435,21 @@ main{max-width:var(--maxw);margin:0 auto;padding:32px 24px 56px}
       </div>
       <div class="list">
         <div class="row">
-          <div class="row-date" style="background:var(--green-50);color:var(--green-700);font-size:.72rem;font-weight:800">MI</div>
+          <div class="row-date" style="background:var(--gold-100);color:var(--gold-700);font-size:.72rem;font-weight:800">MI</div>
           <div class="row-body">
             <div class="row-title">MI Ma'arif NU Sleman</div>
             <div class="row-sub">Madrasah Ibtidaiyah · Sleman</div>
           </div>
         </div>
         <div class="row">
-          <div class="row-date" style="background:var(--green-50);color:var(--green-700);font-size:.72rem;font-weight:800">MTs</div>
+          <div class="row-date" style="background:var(--gold-100);color:var(--gold-700);font-size:.72rem;font-weight:800">MTs</div>
           <div class="row-body">
             <div class="row-title">MTs Ma'arif NU Yogyakarta</div>
             <div class="row-sub">Madrasah Tsanawiyah · Sleman</div>
           </div>
         </div>
         <div class="row">
-          <div class="row-date" style="background:var(--green-50);color:var(--green-700);font-size:.72rem;font-weight:800">MA</div>
+          <div class="row-date" style="background:var(--gold-100);color:var(--gold-700);font-size:.72rem;font-weight:800">MA</div>
           <div class="row-body">
             <div class="row-title">MA Ma'arif NU Sleman</div>
             <div class="row-sub">Madrasah Aliyah · Sleman</div>
@@ -1235,21 +1465,21 @@ main{max-width:var(--maxw);margin:0 auto;padding:32px 24px 56px}
       </div>
       <div class="list">
         <div class="row">
-          <div class="row-date" style="background:var(--green-50);color:var(--green-700);font-size:.72rem;font-weight:800">P</div>
+          <div class="row-date" style="background:var(--gold-100);color:var(--gold-700);font-size:.72rem;font-weight:800">P</div>
           <div class="row-body">
             <div class="row-title">Pondok Pesantren Al-Munawwir NU</div>
             <div class="row-sub">Krapyak, Sleman · 2.500 santri</div>
           </div>
         </div>
         <div class="row">
-          <div class="row-date" style="background:var(--green-50);color:var(--green-700);font-size:.72rem;font-weight:800">P</div>
+          <div class="row-date" style="background:var(--gold-100);color:var(--gold-700);font-size:.72rem;font-weight:800">P</div>
           <div class="row-body">
             <div class="row-title">Pondok Pesantren Sunan Pandanaran</div>
             <div class="row-sub">Ngaglik, Sleman · 1.800 santri</div>
           </div>
         </div>
         <div class="row">
-          <div class="row-date" style="background:var(--green-50);color:var(--green-700);font-size:.72rem;font-weight:800">P</div>
+          <div class="row-date" style="background:var(--gold-100);color:var(--gold-700);font-size:.72rem;font-weight:800">P</div>
           <div class="row-body">
             <div class="row-title">Pondok Pesantren Nurul Ummah</div>
             <div class="row-sub">Kotagede, Sleman · 900 santri</div>
@@ -1262,17 +1492,13 @@ main{max-width:var(--maxw);margin:0 auto;padding:32px 24px 56px}
   <!-- ============ MARKET ============ -->
   <section class="page" data-page="market">
     <div class="hero">
-      <div class="hero-badge">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M3 9l1.5-5h15L21 9"/>
-          <path d="M3 9v10a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V9"/>
-          <path d="M3 9h18"/>
-          <path d="M9 9v3a3 3 0 0 0 6 0V9"/>
-        </svg>
-      </div>
       <div class="hero-text">
         <h1>MaNUSya Market</h1>
         <p>Dua ekosistem: <strong>BAZMalah</strong> (marketplace UMKM) dan <strong>NUShop</strong> (toko NU dengan sistem kasir &amp; stok multi-gudang).</p>
+        <button class="hero-cta" data-need="market:jamaah_market,manajemen_market" data-demo="Jelajahi Market">
+          Jelajahi Market
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
       </div>
     </div>
 
@@ -1561,24 +1787,24 @@ main{max-width:var(--maxw);margin:0 auto;padding:32px 24px 56px}
         <div class="section-head"><div class="section-title">Alur Stok Inventory NUShop</div></div>
         <div class="card">
           <div style="display:flex;flex-direction:column;gap:10px">
-            <div class="row" style="padding:10px 12px">
-              <div class="row-date" style="background:linear-gradient(135deg,var(--green-600),var(--green-700));color:#fff;font-size:.62rem;font-weight:800">PC</div>
+            <div class="row" style="padding:12px 14px">
+              <div class="row-date" style="background:linear-gradient(135deg,var(--em-700),var(--em-800));color:var(--gold-400);font-size:.62rem;font-weight:800">PC</div>
               <div class="row-body">
                 <div class="row-title">Gudang Pusat · NUMart Centre (PC)</div>
                 <div class="row-sub">Sumber stok utama · 12.400 SKU</div>
               </div>
             </div>
-            <div style="text-align:center;color:var(--muted);font-size:1.2rem">↓</div>
-            <div class="row" style="padding:10px 12px">
-              <div class="row-date" style="background:var(--green-100);color:var(--green-700);font-size:.6rem;font-weight:800">MWC</div>
+            <div style="text-align:center;color:var(--gold-500);font-size:1.3rem">↓</div>
+            <div class="row" style="padding:12px 14px">
+              <div class="row-date" style="background:var(--em-100);color:var(--em-700);font-size:.6rem;font-weight:800">MWC</div>
               <div class="row-body">
                 <div class="row-title">Gudang Cabang · MWC / NUMart</div>
                 <div class="row-sub">Distribusi ke wilayah · 3 cabang aktif</div>
               </div>
             </div>
-            <div style="text-align:center;color:var(--muted);font-size:1.2rem">↓</div>
-            <div class="row" style="padding:10px 12px">
-              <div class="row-date" style="background:var(--green-50);color:var(--green-700);font-size:.55rem;font-weight:800">SHOP</div>
+            <div style="text-align:center;color:var(--gold-500);font-size:1.3rem">↓</div>
+            <div class="row" style="padding:12px 14px">
+              <div class="row-date" style="background:var(--em-50);color:var(--em-700);font-size:.55rem;font-weight:800">SHOP</div>
               <div class="row-body">
                 <div class="row-title">NUShop (Toko)</div>
                 <div class="row-sub">Penjualan ke jamaah · 3 toko aktif</div>
@@ -1641,21 +1867,21 @@ main{max-width:var(--maxw);margin:0 auto;padding:32px 24px 56px}
         </div>
         <div class="partner-grid">
           <div class="partner">
-            <div class="partner-logo" style="background:linear-gradient(135deg,var(--green-600),var(--green-700))">S</div>
+            <div class="partner-logo" style="background:linear-gradient(135deg,var(--gold-500),var(--gold-600));color:var(--em-900)">S</div>
             <div class="partner-body">
               <div class="partner-name">NUMart Sleman</div>
               <div class="partner-meta"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>4.9 · Toko Pusat · Sleman</div>
             </div>
           </div>
           <div class="partner">
-            <div class="partner-logo" style="background:linear-gradient(135deg,var(--green-600),var(--green-700))">D</div>
+            <div class="partner-logo" style="background:linear-gradient(135deg,var(--gold-500),var(--gold-600));color:var(--em-900)">D</div>
             <div class="partner-body">
               <div class="partner-name">NUMart Depok</div>
               <div class="partner-meta"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>4.8 · Cabang · Depok, Sleman</div>
             </div>
           </div>
           <div class="partner">
-            <div class="partner-logo" style="background:linear-gradient(135deg,var(--green-600),var(--green-700))">G</div>
+            <div class="partner-logo" style="background:linear-gradient(135deg,var(--gold-500),var(--gold-600));color:var(--em-900)">G</div>
             <div class="partner-body">
               <div class="partner-name">NUMart Godean</div>
               <div class="partner-meta"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>4.7 · Cabang · Godean, Sleman</div>
@@ -1708,14 +1934,13 @@ main{max-width:var(--maxw);margin:0 auto;padding:32px 24px 56px}
   <!-- ============ PEDULI ============ -->
   <section class="page" data-page="peduli">
     <div class="hero">
-      <div class="hero-badge">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M20.8 5.6a5 5 0 0 0-7.1 0L12 7.3l-1.7-1.7a5 5 0 1 0-7.1 7.1L12 21.5l8.8-8.8a5 5 0 0 0 0-7.1z"/>
-        </svg>
-      </div>
       <div class="hero-text">
         <h1>Peduli</h1>
         <p>Program Zakat, Infaq, dan Sedekah (ZIS) dengan laporan penyaluran yang transparan.</p>
+        <button class="hero-cta" data-need="peduli:donatur,manajemen_zis" data-demo="Donasi Sekarang">
+          Donasi Sekarang
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
       </div>
     </div>
 
@@ -2140,7 +2365,6 @@ function updateHijri(){
     if(el) el.textContent = hijri;
   });
 
-  // Rebuild calendar only when day changes
   const dayKey = now.toDateString();
   if(dayKey !== lastCalendarDateKey){
     lastCalendarDateKey = dayKey;
