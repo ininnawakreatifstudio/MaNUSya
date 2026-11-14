@@ -129,13 +129,18 @@ main{max-width:var(--maxw);margin:0 auto;padding:32px 24px 56px}
   .hero p{font-size:1.02rem}
 }
 
-/* ============ PRAYER LIVE CARD (compact) ============ */
+/* ============ PRAYER WRAP (Container Query Root) ============ */
+.prayer-wrap{
+  container-type: inline-size;
+  container-name: prayer;
+}
+
+/* ============ PRAYER LIVE CARD ============ */
 .prayer-live{
   background:linear-gradient(135deg,var(--green-700) 0%,var(--green-800) 100%);
   border-radius:var(--radius-lg);padding:18px;
   color:#fff;position:relative;overflow:hidden;
-  box-shadow:0 12px 32px rgba(21,106,68,.28);
-  max-width:760px
+  box-shadow:0 12px 32px rgba(21,106,68,.28)
 }
 @media(min-width:960px){.prayer-live{padding:22px}}
 .prayer-live::before{
@@ -144,6 +149,7 @@ main{max-width:var(--maxw);margin:0 auto;padding:32px 24px 56px}
   background-size:contain;background-repeat:no-repeat;
   background-position:right center;pointer-events:none;opacity:.5
 }
+
 .prayer-head{
   display:flex;align-items:flex-start;justify-content:space-between;
   gap:12px;margin-bottom:14px;position:relative;z-index:1;flex-wrap:wrap
@@ -178,7 +184,6 @@ main{max-width:var(--maxw);margin:0 auto;padding:32px 24px 56px}
 .date-item svg{width:12px;height:12px;color:var(--green-200);flex:none}
 .date-item strong{color:#fff;font-weight:700}
 
-/* PRAYER GRID — compact & fit 5 on mobile */
 .prayer-grid-live{
   display:grid;grid-template-columns:repeat(5,minmax(0,1fr));
   gap:5px;position:relative;z-index:1;margin-bottom:14px
@@ -235,6 +240,71 @@ main{max-width:var(--maxw);margin:0 auto;padding:32px 24px 56px}
   color:#fff;letter-spacing:.03em;
   font-variant-numeric:tabular-nums;
   font-feature-settings:'tnum'
+}
+
+/* ============ HIJRI CALENDAR (hidden by default, shown on wide container) ============ */
+.prayer-right{
+  display:none;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:12px;
+  padding:14px;
+  position:relative;
+  z-index:1;
+}
+.hijri-title{
+  font-size:.68rem;font-weight:700;color:var(--green-200);
+  text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px
+}
+.hijri-month-label{
+  font-size:.9rem;font-weight:700;color:#fff;
+  margin-bottom:10px;padding-bottom:8px;
+  border-bottom:1px solid rgba(255,255,255,.1);
+  letter-spacing:-.01em
+}
+.hijri-weekdays{
+  display:grid;grid-template-columns:repeat(7,1fr);
+  gap:3px;margin-bottom:6px
+}
+.hijri-weekdays span{
+  font-size:.58rem;font-weight:700;text-align:center;
+  color:var(--green-200);text-transform:uppercase;
+  letter-spacing:.04em;padding:2px 0
+}
+.hijri-grid{
+  display:grid;grid-template-columns:repeat(7,1fr);gap:3px
+}
+.hijri-cell{
+  aspect-ratio:1;
+  display:grid;place-items:center;
+  font-size:.72rem;font-weight:600;color:#fff;
+  border-radius:6px;
+  background:rgba(255,255,255,.04);
+  font-variant-numeric:tabular-nums;
+  transition:.15s
+}
+.hijri-cell.empty{background:transparent}
+.hijri-cell:not(.empty):hover{background:rgba(255,255,255,.12)}
+.hijri-cell.today{
+  background:var(--green-400);color:var(--green-900);
+  font-weight:800;
+  box-shadow:0 0 16px rgba(92,192,141,.5)
+}
+.hijri-note{
+  font-size:.66rem;color:var(--green-200);margin-top:8px;
+  text-align:center;opacity:.8
+}
+
+/* Container query — 2 columns only when card is wide enough */
+@container prayer (min-width: 620px){
+  .prayer-live{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) 260px;
+    gap:22px;
+    align-items:start
+  }
+  .prayer-right{display:block}
+  .prayer-live::before{opacity:.2;width:35%}
 }
 
 /* ============ QUICK ACTIONS ============ */
@@ -336,10 +406,8 @@ main{max-width:var(--maxw);margin:0 auto;padding:32px 24px 56px}
 .market-panel{display:none}
 .market-panel.active{display:block;animation:fade .25s ease}
 
-/* Info card 2-col */
 .info-2col{display:grid;grid-template-columns:1fr;gap:12px}
 @media(min-width:720px){.info-2col{grid-template-columns:1fr 1fr}}
-
 .info-card{
   background:#fff;border:1px solid var(--line);border-radius:14px;
   padding:18px;box-shadow:var(--shadow-sm)
@@ -413,7 +481,6 @@ main{max-width:var(--maxw);margin:0 auto;padding:32px 24px 56px}
 .product-btn:hover{background:linear-gradient(135deg,var(--green-600),var(--green-700))}
 .product-btn svg{width:12px;height:12px}
 
-/* Kategori chips */
 .cat-row{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;
   scrollbar-width:none;-webkit-overflow-scrolling:touch;margin-bottom:18px}
 .cat-row::-webkit-scrollbar{display:none}
@@ -429,7 +496,6 @@ main{max-width:var(--maxw);margin:0 auto;padding:32px 24px 56px}
   color:#fff;border-color:var(--green-500)
 }
 
-/* Partner stores */
 .partner-grid{display:grid;grid-template-columns:1fr;gap:10px}
 @media(min-width:720px){.partner-grid{grid-template-columns:repeat(2,1fr)}}
 .partner{
@@ -713,29 +779,38 @@ main{max-width:var(--maxw);margin:0 auto;padding:32px 24px 56px}
       </div>
     </div>
 
-    <!-- Prayer Live -->
-    <div class="prayer-live" style="margin-bottom:26px">
-      <div class="prayer-head">
-        <div class="prayer-head-info">
-          <div class="prayer-label">Jadwal Salat</div>
-          <div class="prayer-location">Sleman <small>· Yogyakarta</small></div>
+    <!-- Prayer Live: 1 col mobile, 2 col desktop (via container query) -->
+    <div class="prayer-wrap" style="margin-bottom:26px">
+      <div class="prayer-live">
+        <div class="prayer-left">
+          <div class="prayer-head">
+            <div class="prayer-head-info">
+              <div class="prayer-label">Jadwal Salat</div>
+              <div class="prayer-location">Sleman <small>· Yogyakarta</small></div>
+            </div>
+            <div class="live-clock" id="liveClock">--:--:--</div>
+          </div>
+          <div class="date-row">
+            <div class="date-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
+              <span id="gregDate">-</span>
+            </div>
+            <div class="date-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+              <span><strong id="hijriDate">-</strong></span>
+            </div>
+          </div>
+          <div class="prayer-grid-live" id="prayerGridLive"></div>
+          <div class="countdown-bar">
+            <span class="countdown-label">Menuju <strong id="nextPrayerName">-</strong></span>
+            <span class="countdown-value" id="countdown">--:--:--</span>
+          </div>
         </div>
-        <div class="live-clock" id="liveClock">--:--:--</div>
-      </div>
-      <div class="date-row">
-        <div class="date-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
-          <span id="gregDate">-</span>
+        <div class="prayer-right">
+          <div class="hijri-title">Kalender Hijriah</div>
+          <div id="hijriCalendar"></div>
+          <div class="hijri-note">Kalender Umm al-Qura</div>
         </div>
-        <div class="date-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
-          <span><strong id="hijriDate">-</strong></span>
-        </div>
-      </div>
-      <div class="prayer-grid-live" id="prayerGridLive"></div>
-      <div class="countdown-bar">
-        <span class="countdown-label">Menuju <strong id="nextPrayerName">-</strong></span>
-        <span class="countdown-value" id="countdown">--:--:--</span>
       </div>
     </div>
 
@@ -881,28 +956,37 @@ main{max-width:var(--maxw);margin:0 auto;padding:32px 24px 56px}
 
     <div class="layout-split">
       <div class="layout-main">
-        <div class="prayer-live" style="margin-bottom:22px">
-          <div class="prayer-head">
-            <div class="prayer-head-info">
-              <div class="prayer-label">Jadwal Salat Hari Ini</div>
-              <div class="prayer-location">Sleman <small>· Yogyakarta</small></div>
+        <div class="prayer-wrap" style="margin-bottom:22px">
+          <div class="prayer-live">
+            <div class="prayer-left">
+              <div class="prayer-head">
+                <div class="prayer-head-info">
+                  <div class="prayer-label">Jadwal Salat Hari Ini</div>
+                  <div class="prayer-location">Sleman <small>· Yogyakarta</small></div>
+                </div>
+                <div class="live-clock" id="liveClock2">--:--:--</div>
+              </div>
+              <div class="date-row">
+                <div class="date-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
+                  <span id="gregDate2">-</span>
+                </div>
+                <div class="date-item">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+                  <span><strong id="hijriDate2">-</strong></span>
+                </div>
+              </div>
+              <div class="prayer-grid-live" id="prayerGridLive2"></div>
+              <div class="countdown-bar">
+                <span class="countdown-label">Menuju <strong id="nextPrayerName2">-</strong></span>
+                <span class="countdown-value" id="countdown2">--:--:--</span>
+              </div>
             </div>
-            <div class="live-clock" id="liveClock2">--:--:--</div>
-          </div>
-          <div class="date-row">
-            <div class="date-item">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
-              <span id="gregDate2">-</span>
+            <div class="prayer-right">
+              <div class="hijri-title">Kalender Hijriah</div>
+              <div id="hijriCalendar2"></div>
+              <div class="hijri-note">Kalender Umm al-Qura</div>
             </div>
-            <div class="date-item">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
-              <span><strong id="hijriDate2">-</strong></span>
-            </div>
-          </div>
-          <div class="prayer-grid-live" id="prayerGridLive2"></div>
-          <div class="countdown-bar">
-            <span class="countdown-label">Menuju <strong id="nextPrayerName2">-</strong></span>
-            <span class="countdown-value" id="countdown2">--:--:--</span>
           </div>
         </div>
 
@@ -961,7 +1045,6 @@ main{max-width:var(--maxw);margin:0 auto;padding:32px 24px 56px}
           </div>
         </div>
 
-        <!-- Daftar Masjid NU Sleman -->
         <div class="section">
           <div class="section-head">
             <div class="section-title">Masjid NU Sleman</div>
@@ -1195,7 +1278,6 @@ main{max-width:var(--maxw);margin:0 auto;padding:32px 24px 56px}
 
     <div class="login-prompt" data-prompt-section="market"></div>
 
-    <!-- Sub-tab: BAZMalah / NUShop -->
     <div class="market-tabs">
       <button class="market-tab active" data-market-tab="bazmalah">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1.5-5h15L21 9"/><path d="M3 9v10a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V9"/><path d="M3 9h18"/></svg>
@@ -1207,7 +1289,6 @@ main{max-width:var(--maxw);margin:0 auto;padding:32px 24px 56px}
       </button>
     </div>
 
-    <!-- ========== BAZMalah Panel ========== -->
     <div class="market-panel active" data-market-panel="bazmalah">
       <div class="section">
         <div class="section-head"><div class="section-title">Kategori</div></div>
@@ -1339,7 +1420,6 @@ main{max-width:var(--maxw);margin:0 auto;padding:32px 24px 56px}
         </div>
       </div>
 
-      <!-- Area khusus Mitra & Affiliate BAZMalah -->
       <div class="section">
         <div class="section-head"><div class="section-title">Area Mitra &amp; Affiliate</div></div>
         <div class="program-grid">
@@ -1397,7 +1477,6 @@ main{max-width:var(--maxw);margin:0 auto;padding:32px 24px 56px}
       </div>
     </div>
 
-    <!-- ========== NUShop Panel ========== -->
     <div class="market-panel" data-market-panel="nushop">
       <div class="section">
         <div class="section-head">
@@ -1478,7 +1557,6 @@ main{max-width:var(--maxw);margin:0 auto;padding:32px 24px 56px}
         </div>
       </div>
 
-      <!-- Stok Inventory Multi-Gudang -->
       <div class="section">
         <div class="section-head"><div class="section-title">Alur Stok Inventory NUShop</div></div>
         <div class="card">
@@ -1510,7 +1588,6 @@ main{max-width:var(--maxw);margin:0 auto;padding:32px 24px 56px}
         </div>
       </div>
 
-      <!-- Area Kasir & Manajemen NUShop -->
       <div class="section">
         <div class="section-head"><div class="section-title">Area Kasir &amp; Manajemen NUShop</div></div>
         <div class="program-grid">
@@ -1588,7 +1665,6 @@ main{max-width:var(--maxw);margin:0 auto;padding:32px 24px 56px}
       </div>
     </div>
 
-    <!-- ========== Pembayaran & Delivery (shared) ========== -->
     <div class="section">
       <div class="section-head"><div class="section-title">Pembayaran &amp; Delivery</div></div>
       <div class="info-2col">
@@ -1832,6 +1908,7 @@ const SECTIONS = {
 
 let login = null;
 let currentModalSection = 'masjid';
+let lastCalendarDateKey = '';
 
 const PRAYERS = [
   { name: 'Subuh', time: '04:32', hour: 4, minute: 32 },
@@ -1956,6 +2033,93 @@ const WEEKDAYS_ID = ['Minggu','Senin','Selasa','Rabu','Kamis','Jum\'at','Sabtu']
 const MONTHS_ID = ['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Ags','Sep','Okt','Nov','Des'];
 function pad2(n){ return String(n).padStart(2, '0'); }
 
+function getHijriParts(date){
+  try {
+    const fmt = new Intl.DateTimeFormat('en-u-ca-islamic-umalqura', {
+      day:'numeric', month:'numeric', year:'numeric'
+    });
+    const parts = fmt.formatToParts(date);
+    const val = t => {
+      const p = parts.find(x => x.type === t);
+      return p ? parseInt(p.value, 10) : null;
+    };
+    return { day: val('day'), month: val('month'), year: val('year') };
+  } catch(e){ return null; }
+}
+
+function renderHijriCalendar(containerId){
+  const container = document.getElementById(containerId);
+  if(!container) return;
+
+  const today = new Date();
+  today.setHours(12,0,0,0);
+
+  let start = new Date(today);
+  let startParts = getHijriParts(start);
+  if(!startParts){
+    container.innerHTML = '<div style="color:#fff;font-size:.8rem;text-align:center;padding:8px 0">Kalender Hijriah tidak tersedia</div>';
+    return;
+  }
+
+  let safety = 0;
+  while(startParts.day !== 1 && safety < 35){
+    start.setDate(start.getDate() - 1);
+    startParts = getHijriParts(start);
+    if(!startParts) return;
+    safety++;
+  }
+
+  const days = [];
+  let cursor = new Date(start);
+  safety = 0;
+  while(safety < 35){
+    const h = getHijriParts(cursor);
+    if(!h) break;
+    if(h.month !== startParts.month || h.year !== startParts.year) break;
+    days.push({
+      weekday: cursor.getDay(),
+      hijriDay: h.day,
+      gregDay: cursor.getDate(),
+      isToday: cursor.toDateString() === today.toDateString()
+    });
+    cursor.setDate(cursor.getDate() + 1);
+    safety++;
+  }
+
+  if(!days.length){ container.innerHTML = ''; return; }
+
+  let monthLabel;
+  try {
+    monthLabel = new Intl.DateTimeFormat('id-ID-u-ca-islamic-umalqura', {
+      month:'long', year:'numeric'
+    }).format(start) + ' H';
+  } catch(e){
+    monthLabel = `${startParts.month}/${startParts.year} H`;
+  }
+
+  const dayNames = ['Sen','Sel','Rab','Kam','Jum','Sab','Min'];
+  const mondayIdx = d => (d + 6) % 7;
+
+  const firstOffset = mondayIdx(days[0].weekday);
+  const cells = [];
+  for(let i=0;i<firstOffset;i++) cells.push(null);
+  days.forEach(d => cells.push(d));
+  while(cells.length % 7 !== 0) cells.push(null);
+
+  let html = `<div class="hijri-month-label">${monthLabel}</div>`;
+  html += `<div class="hijri-weekdays">${dayNames.map(n=>`<span>${n}</span>`).join('')}</div>`;
+  html += `<div class="hijri-grid">`;
+  cells.forEach(c => {
+    if(!c){
+      html += `<span class="hijri-cell empty"></span>`;
+    } else {
+      html += `<span class="hijri-cell${c.isToday ? ' today' : ''}" title="${c.gregDay}">${c.hijriDay}</span>`;
+    }
+  });
+  html += `</div>`;
+  container.innerHTML = html;
+}
+
 function updateHijri(){
   const now = new Date();
   const greg = `${WEEKDAYS_ID[now.getDay()]}, ${now.getDate()} ${MONTHS_ID[now.getMonth()]} ${now.getFullYear()}`;
@@ -1975,6 +2139,14 @@ function updateHijri(){
     const el = document.getElementById(id);
     if(el) el.textContent = hijri;
   });
+
+  // Rebuild calendar only when day changes
+  const dayKey = now.toDateString();
+  if(dayKey !== lastCalendarDateKey){
+    lastCalendarDateKey = dayKey;
+    renderHijriCalendar('hijriCalendar');
+    renderHijriCalendar('hijriCalendar2');
+  }
 }
 
 function updateClock(){
@@ -2049,7 +2221,6 @@ function gateAction(section, roles, demoLabel){
   return true;
 }
 
-// Market sub-tab
 function switchMarketTab(tab){
   document.querySelectorAll('[data-market-tab]').forEach(b =>
     b.classList.toggle('active', b.dataset.marketTab === tab));
@@ -2061,7 +2232,6 @@ document.addEventListener('click', (e) => {
   const navBtn = e.target.closest('[data-nav]');
   if(navBtn){ e.preventDefault(); goTo(navBtn.dataset.nav); return; }
 
-  // Market sub-tab
   const marketTab = e.target.closest('[data-market-tab]');
   if(marketTab){ switchMarketTab(marketTab.dataset.marketTab); return; }
 
